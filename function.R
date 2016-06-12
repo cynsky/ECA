@@ -63,3 +63,10 @@ distance<-function(lon1,lat1,lon2,lat2){
   return (distance);
   
 }
+
+#计算弧度
+rad<-function(d){
+  
+  return (d*pi/180);
+  
+}
