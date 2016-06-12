@@ -37,7 +37,7 @@ setLines<-function(points){
 #lines:data.table
 #speed unit:knot(nm/h)
 
-addLineSpeed<-function(lines,time_threshold,dist_threshold){ 
+addLineSpeed<-function(lines,time_threshold=600,dist_threshold=2){ 
   
   lines=lines[,timespan:=abs(time2-time1)*1.0]
   lines=lines[,distance:=distance(lon1,lat1,lon2,lat2)]
