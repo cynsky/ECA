@@ -2,6 +2,11 @@
 library('data.table')
 library('dplyr')
 library('sp')
+library('dbscan')
+library('ggplot2')
+# read ships
+shipfile='D://share/ships/ships.txt'
+ships=getships(shipfile);dim(ships);head(ships);setkey(ships,mmsi)
 
 #提取在区域内的轨迹点
 filenames=fread(input = 'D://share/Git/Rprojects/ECA/filename',header = TRUE)
@@ -35,16 +40,19 @@ write.csv(p.grids,file = 'zerogrids.csv')
 
 # 数据处理：segment trajectory，在后边添加tripid,其中tripid==0表示为分割segment
 
-
-# 数据分析与处理
 mmsis=points[,.N,mmsi]$mmsi
-dt.ship=points[mmsi==mmsis[5],];dim(dt.ship)
-plot(dt.ship$lon,dt.ship$lat)
+p1=points[mmsi==mmsis[1],];dim(p1);
+p=setPoints(p1)
+l=setLines(p);
+l=addLineSpeed(l);
+l=l[avgspeed>=250,]#航速不能超过25节
 
+#轨迹分段
 
+l=segTra(l)
 
-dt.sample=sample_n(dt,10000)
-plot(dt.sample$lon,dt.sample$lat)
-
+#缺失轨迹
+missLine=l[,list(lid,tripid,sog1,sog2,avgspeed1,avgspeed2,avgspeed,timespan,distance)][distance>=2*1852&tripid>0]
+dim(missLine)
 
 
