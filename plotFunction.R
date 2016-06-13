@@ -8,3 +8,7 @@ plotSegs <- function(l) {
   }
 }
 
+g=fread('zerogrids.csv')
+p=getMap(g,7)
+p=p+geom_point(data = g,aes(x=lon,y=lat))
+p
