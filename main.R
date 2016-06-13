@@ -23,7 +23,7 @@ setkey(dt,mmsi,time)
 polygon.points=fread(input ='D://share/Git/Rprojects/ECA/polygon' )
 idx.array=point.in.polygon(dt$lon,dt$lat,polygon.points$x,polygon.points$y)
 points=cbind(dt,idx.array)[idx.array>0,]
-points=points[sog<260,]#删掉航速大于26节的轨迹点
+points=points[sog<260&sog>=0,]#删掉航速大于26节的轨迹点
 
 #聚类发现集装箱码头，并画出泊位位置，如有岸电等情况
 # p0航速为0的点，其中有可能在锚地或者泊位，再视觉确认
@@ -45,7 +45,7 @@ p1=points[mmsi==mmsis[1],];dim(p1);
 p=setPoints(p1)
 l=setLines(p);
 l=addLineSpeed(l);
-l=l[avgspeed>=250,]#航速不能超过25节
+l=l[avgspeed<=250,]#航速不能超过25节
 
 #轨迹分段
 
@@ -54,5 +54,30 @@ l=segTra(l)
 #缺失轨迹
 missLine=l[,list(lid,tripid,sog1,sog2,avgspeed1,avgspeed2,avgspeed,timespan,distance)][distance>=2*1852&tripid>0]
 dim(missLine)
+
+#计算排放
+shipmmsi=mmsis[1]
+ship=ships[mmsi==shipmmsi]
+v=as.numeric(ship$speed)*10
+pw=as.numeric(ship$powerkw)
+
+e=l[,list(.N,duration=sum(timespan)),list(speed=round(avgspeed))]
+
+e[,power:=round((speed*0.94/v)^3,2)]
+plot(e$power)
+#operation modes:1 at berth, 2 anchored, 3 manoeuvering, 4 slow-steaming, 5 normal cruising
+#imo 2014,p122
+e[,mode:=0]
+e[speed<10,mode:=1]
+e[speed>=1&speed<=30,mode:=2]
+e[speed>30&power<0.2,mode:=3]
+e[power>=0.2&power<=0.65,mode:=4]
+e[power>0.65,mode:=5]
+
+#主机载荷调整系数
+
+
+
+
 
 
