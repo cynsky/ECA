@@ -1,0 +1,54 @@
+ShipClass,EngineType,CapacityFrom,CapacityTo,Berth,Anchorage,Manoeuvring,Sea
+Bulk carrier,boiler,0,9999,50,50,50,0
+Bulk carrier,boiler,10000,34999,50,50,50,0
+Bulk carrier,boiler,35000,59999,100,100,100,0
+Bulk carrier,boiler,60000,99999,200,200,200,0
+Bulk carrier,boiler,100000,199999,200,200,200,0
+Bulk carrier,boiler,200000,10000000,200,200,200,0
+Chemical tanker,boiler,0,4999,125,125,125,0
+Chemical tanker,boiler,5000,9999,250,250,250,0
+Chemical tanker,boiler,10000,19999,250,250,250,0
+Chemical tanker,boiler,20000,10000000,250,250,250,0
+Container,boiler,0,999,120,120,120,0
+Container,boiler,1000,1999,290,290,290,0
+Container,boiler,2000,2999,350,350,350,0
+Container,boiler,3000,4999,450,450,450,0
+Container,boiler,5000,7999,450,450,450,0
+Container,boiler,8000,11999,520,520,520,0
+Container,boiler,12000,14500,630,630,630,0
+Container,boiler,14500,10000000,700,700,700,0
+General cargo,boiler,0,4999,0,0,0,0
+General cargo,boiler,5000,9999,75,75,75,0
+General cargo,boiler,10000,10000000,100,100,100,0
+Liquefied gas tanker,boiler,0,49999,1000,200,200,100
+Liquefied gas tanker,boiler,50000,199999,1500,300,300,150
+Liquefied gas tanker,boiler,200000,10000000,3000,600,600,300
+Oil tanker,boiler,0,4999,500,100,100,0
+Oil tanker,boiler,5000,9999,750,150,150,0
+Oil tanker,boiler,10000,19999,1250,250,250,0
+Oil tanker,boiler,20000,59999,1500,300,300,150
+Oil tanker,boiler,60000,79999,1500,300,300,150
+Oil tanker,boiler,80000,119999,2000,400,400,200
+Oil tanker,boiler,120000,199999,2500,500,500,250
+Oil tanker,boiler,200000,10000000,3000,600,600,300
+Other liquids tankers,boiler,0,10000000,1000,200,200,100
+Ferry-pax only,boiler,0,1999,0,0,0,0
+Ferry-pax only,boiler,2000,10000000,0,0,0,0
+Cruise,boiler,0,1999,250,250,250,0
+Cruise,boiler,2000,9999,250,250,250,0
+Cruise,boiler,10000,59999,1000,1000,1000,0
+Cruise,boiler,60000,99999,500,500,500,0
+Cruise,boiler,100000,10000000,500,500,500,0
+Ferry-ropax,boiler,0,1999,0,0,0,0
+Ferry-ropax,boiler,2000,10000000,0,0,0,0
+Refrigerated bulk,boiler,0,1999,270,270,270,0
+Ro-ro,boiler,0,4999,200,200,200,0
+Ro-ro,boiler,5000,10000000,300,300,300,0
+Vehicle,boiler,0,10000000,268,268,268,0
+Vehicle,boiler,4000,10000000,268,268,268,0
+Yacht,boiler,0,10000000,0,0,0,0
+Service-tug,boiler,0,10000000,0,0,0,0
+Miscellaneous fishing,boiler,0,10000000,0,0,0,0
+Offshore,boiler,0,10000000,0,0,0,0
+Service-other,boiler,0,10000000,0,0,0,0
+Miscellaneous-other,boiler,0,10000000,0,0,0,0

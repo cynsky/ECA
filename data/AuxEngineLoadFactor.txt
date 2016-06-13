@@ -1,0 +1,11 @@
+Ship-Type,Cruise,RSZ,Maneuver,Hotel
+Auto Carrier,0.15,0.30,0.45,0.26
+Bulk Carrier,0.17,0.27,0.45,0.10
+Container Ship,0.13,0.25,0.48,0.19
+Cruise Ship,0.80,0.80,0.80,0.64
+General Cargo,0.17,0.27,0.45,0.22
+Miscellaneous,0.17,0.27,0.45,0.22
+OG Tug,0.17,0.27,0.45,0.22
+RORO,0.15,0.30,0.45,0.26
+Reefer,0.20,0.34,0.67,0.32
+Tanker,0.24,0.28,0.33,0.26
