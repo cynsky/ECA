@@ -1,4 +1,4 @@
-ShipClass,EngineType,CapacityFrom,CapacityTo,Berth,Anchorage,Manoeuvring,Sea
+ShipClass,EngineType,CapacityFrom,CapacityTo,Berth,Anchorage,Maneuvering,Sea
 Bulk carrier,boiler,0,9999,50,50,50,0
 Bulk carrier,boiler,10000,34999,50,50,50,0
 Bulk carrier,boiler,35000,59999,100,100,100,0
@@ -9,14 +9,14 @@ Chemical tanker,boiler,0,4999,125,125,125,0
 Chemical tanker,boiler,5000,9999,250,250,250,0
 Chemical tanker,boiler,10000,19999,250,250,250,0
 Chemical tanker,boiler,20000,10000000,250,250,250,0
-Container,boiler,0,999,120,120,120,0
-Container,boiler,1000,1999,290,290,290,0
-Container,boiler,2000,2999,350,350,350,0
-Container,boiler,3000,4999,450,450,450,0
-Container,boiler,5000,7999,450,450,450,0
-Container,boiler,8000,11999,520,520,520,0
-Container,boiler,12000,14500,630,630,630,0
-Container,boiler,14500,10000000,700,700,700,0
+Container,boiler,0,11999,120,120,120,0
+Container,boiler,12000,29999,290,290,290,0
+Container,boiler,30000,44999,350,350,350,0
+Container,boiler,45000,64999,450,450,450,0
+Container,boiler,65000,99999,450,450,450,0
+Container,boiler,100000,134999,520,520,520,0
+Container,boiler,135000,149999,630,630,630,0
+Container,boiler,150000,10000000,700,700,700,0
 General cargo,boiler,0,4999,0,0,0,0
 General cargo,boiler,5000,9999,75,75,75,0
 General cargo,boiler,10000,10000000,100,100,100,0

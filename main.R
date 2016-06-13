@@ -6,7 +6,7 @@ library('dbscan')
 library('ggplot2')
 library('ggmap')
 # read ships
-shipfile='D://share/ships/ships.txt'
+shipfile='D://share/ships/ships.csv'
 ships=getships(shipfile);dim(ships);head(ships);setkey(ships,mmsi)
 
 #提取在区域内的轨迹点
@@ -63,16 +63,17 @@ pw=as.numeric(ship$powerkw)
 
 e=l[,list(.N,duration=sum(timespan)),list(speed=round(avgspeed))]
 
-e[,power:=round((speed*0.94/v)^3,2)]
-plot(e$power)
+e[,mlf:=round((speed*0.94/v)^3,2)]#mlf=main engine load factor
+plot(e$mlf)
 #operation modes:1 at berth, 2 anchored, 3 manoeuvering, 4 slow-steaming, 5 normal cruising
 #imo 2014,p122
 e[,mode:=0]
 e[speed<10,mode:=1]
 e[speed>=1&speed<=30,mode:=2]
-e[speed>30&power<0.2,mode:=3]
-e[power>=0.2&power<=0.65,mode:=4]
-e[power>0.65,mode:=5]
+e[speed>30&mlf<0.2,mode:=3]
+e[mlf>=0.2&mlf<=0.65,mode:=4]
+e[mlf>0.65,mode:=5]
+#e[mode==3&mlf*100<19.5&mlf*100>1.5,mlf:=0.2]
 
 #主机载荷调整系数
 

@@ -1,0 +1,677 @@
+Type,Name,Size,Unit,Dwt,GT,Flag,Built,Month,Builder,OwnerGroup
+Container,Agamemnon,7943 ,TEU,103773 ,89776 ,Liberia,2007 ,1 ,Daewoo (DSME),Capital Maritime
+Container,Archimidis,7943 ,TEU,103717 ,89776 ,Liberia,2006 ,5 ,Daewoo (DSME),Capital Maritime
+Container,Dalian Express,7179 ,TEU,100019 ,88493 ,Germany,2001 ,10 ,Hyundai HI,Hapag-Lloyd
+Container,Yantian Express,7179 ,TEU,100019 ,88493 ,Germany,2002 ,3 ,Hyundai HI,Hapag-Lloyd
+Container,Ningbo Express,7179 ,TEU,100019 ,88493 ,Germany,2002 ,10 ,Hyundai HI,Hapag-Lloyd
+Container,Berlin Express,7179 ,TEU,100019 ,88493 ,Germany,2003 ,3 ,Hyundai HI,Hapag-Lloyd
+Container,Maersk Lima,7450 ,TEU,94267 ,88237 ,Hong Kong,2011 ,4 ,Daewoo (DSME),A.P. Moller
+Container,Maersk Lirquen,7450 ,TEU,94267 ,88237 ,Hong Kong,2011 ,5 ,Daewoo (DSME),A.P. Moller
+Container,Maersk La Paz,7450 ,TEU,94267 ,88237 ,Hong Kong,2011 ,7 ,Daewoo (DSME),A.P. Moller
+Container,Maersk Luz,7450 ,TEU,94267 ,88237 ,Hong Kong,2011 ,7 ,Daewoo (DSME),A.P. Moller
+Container,Maersk Leticia,7450 ,TEU,94267 ,88237 ,Hong Kong,2011 ,9 ,Daewoo (DSME),A.P. Moller
+Container,Maersk Lavras,7450 ,TEU,94267 ,88236 ,Hong Kong,2011 ,11 ,Daewoo (DSME),A.P. Moller
+Container,Maersk Lebu,7450 ,TEU,94267 ,88237 ,Hong Kong,2011 ,12 ,Daewoo (DSME),A.P. Moller
+Container,Maersk Laguna,7450 ,TEU,94267 ,88237 ,Singapore,2012 ,1 ,Daewoo (DSME),A.P. Moller
+Container,MSC Shenzhen,7455 ,TEU,93659 ,83133 ,Luxembourg,2004 ,9 ,Hyundai HI,Blue Star Holding
+Container,MSC Seattle,7455 ,TEU,93659 ,83133 ,Luxembourg,2004 ,10 ,Hyundai HI,Blue Star Holding
+Container,MSC Vancouver,7455 ,TEU,93659 ,83133 ,Luxembourg,2004 ,11 ,Hyundai HI,Blue Star Holding
+Container,MSC Yokohama,7455 ,TEU,93659 ,83133 ,Luxembourg,2004 ,12 ,Hyundai HI,Blue Star Holding
+Container,Santa Catarina,7154 ,TEU,93592 ,85676 ,Liberia,2011 ,3 ,Daewoo (DSME),Hamburg-Sud
+Container,MSC Ningbo,7455 ,TEU,93572 ,83133 ,Luxembourg,2004 ,7 ,Hyundai HI,Blue Star Holding
+Container,Hanjin Dallas,7455 ,TEU,93558 ,82794 ,Germany,2005 ,12 ,Hyundai HI,NSB Niederelbe
+Container,Hanjin Boston,7455 ,TEU,93558 ,82794 ,Germany,2005 ,7 ,Hyundai HI,Conti Reederei
+Container,Hanjin Miami,7455 ,TEU,93558 ,82794 ,Germany,2005 ,8 ,Hyundai HI,NSB Niederelbe
+Container,Hanjin Baltimore,7455 ,TEU,93558 ,82794 ,Germany,2005 ,9 ,Hyundai HI,NSB Niederelbe
+Container,Hanjin Yantian,7455 ,TEU,93558 ,82794 ,Germany,2005 ,11 ,Hyundai HI,NSB Niederelbe
+Container,Santa Cruz,7154 ,TEU,93551 ,85676 ,Luxembourg,2011 ,4 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Clara,7154 ,TEU,93551 ,85676 ,Germany,2010 ,10 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Isabel,7154 ,TEU,93551 ,85676 ,Germany,2010 ,12 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Ursula,7090 ,TEU,93430 ,86601 ,Madeira,2012 ,3 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Rita,7090 ,TEU,93404 ,85676 ,Germany,2011 ,5 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Rosa,7090 ,TEU,93404 ,85676 ,Liberia,2011 ,7 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Teresa,7090 ,TEU,93404 ,85676 ,Liberia,2011 ,9 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Barbara,7090 ,TEU,92915 ,86601 ,Germany,2012 ,5 ,Daewoo (DSME),Hamburg-Sud
+Container,Santa Ines,7090 ,TEU,92910 ,86601 ,Liberia,2012 ,6 ,Daewoo (DSME),Hamburg-Sud
+Container,Maersk Kure,7403 ,TEU,90456 ,81488 ,Greece,1996 ,1 ,Odense Lindo,Costamare Shipping
+Container,Maersk Kotka,7403 ,TEU,90456 ,81488 ,Liberia,1996 ,4 ,Odense Lindo,Peter Dohle Schiff.
+Container,Maersk Kleven,7403 ,TEU,90456 ,81488 ,Madeira,1996 ,8 ,Odense Lindo,Peter Dohle Schiff.
+Container,Maersk Karlskrona,7403 ,TEU,90456 ,81488 ,Madeira,1996 ,11 ,Odense Lindo,Peter Dohle Schiff.
+Container,Maersk Kokura,7403 ,TEU,90456 ,81488 ,Greece,1997 ,2 ,Odense Lindo,Costamare Shipping
+Container,Maersk Kawasaki,7403 ,TEU,90456 ,81488 ,Danish Int'l Register,1997 ,5 ,Odense Lindo,Costamare Shipping
+Container,Maersk Kiel,6690 ,TEU,88669 ,80942 ,Hong Kong,1998 ,4 ,I.H.I.,A.P. Moller
+Container,Maersk Kalmar,6690 ,TEU,88669 ,80942 ,Netherlands,1998 ,6 ,I.H.I.,A.P. Moller
+Container,Maersk Karachi,6690 ,TEU,88669 ,80942 ,Hong Kong,1998 ,9 ,I.H.I.,A.P. Moller
+Container,Maersk Kimi,6690 ,TEU,88669 ,80942 ,Netherlands,1998 ,11 ,I.H.I.,A.P. Moller
+Container,Maersk Serangoon,6478 ,TEU,87624 ,79702 ,Singapore,2007 ,5 ,Hyundai HI,A.P. Moller
+Container,Maersk Semakau,6478 ,TEU,87621 ,79702 ,Singapore,2007 ,8 ,Hyundai HI,A.P. Moller
+Container,Maersk Sentosa,6478 ,TEU,87618 ,79702 ,Singapore,2007 ,5 ,Hyundai HI,A.P. Moller
+Container,Maersk Senang,6478 ,TEU,87608 ,79702 ,Singapore,2007 ,7 ,Hyundai HI,A.P. Moller
+Container,Maersk Sembawang,6478 ,TEU,87606 ,79702 ,Singapore,2007 ,6 ,Hyundai HI,A.P. Moller
+Container,Maersk Seletar,6478 ,TEU,87545 ,79702 ,Singapore,2007 ,5 ,Hyundai HI,A.P. Moller
+Container,Maersk Sebarok,6478 ,TEU,87534 ,79702 ,Singapore,2007 ,6 ,Hyundai HI,A.P. Moller
+Container,Maersk Klaipeda,6802 ,TEU,87343 ,80654 ,Hong Kong,2001 ,2 ,Hyundai HI,A.P. Moller
+Container,Maersk Kyrenia,6802 ,TEU,87343 ,80654 ,Hong Kong,2001 ,3 ,Hyundai HI,A.P. Moller
+Container,Maersk Kampala,6802 ,TEU,87343 ,80654 ,Netherlands,2001 ,4 ,Hyundai HI,A.P. Moller
+Container,Maersk Kithira,6802 ,TEU,87343 ,80654 ,United Kingdom,2001 ,8 ,Hyundai HI,A.P. Moller
+Container,MSC Ilona,6750 ,TEU,85890 ,75590 ,Germany,2001 ,9 ,Daewoo (DSME),NSB Niederelbe
+Container,Shahraz,6572 ,TEU,85878 ,74175 ,Iran,2008 ,8 ,Hanjin HI (Yeongdo),Soroush Sarzamin
+Container,Shabdis,6572 ,TEU,85878 ,74175 ,Iran,2009 ,12 ,Hanjin HI (Yeongdo),Soroush Sarzamin
+Container,Behta,6572 ,TEU,85878 ,74175 ,Malta,2009 ,12 ,Hanjin HI (Yeongdo),Soroush Sarzamin
+Container,MSC Vanessa,6750 ,TEU,85844 ,75590 ,Panama,2003 ,2 ,Daewoo (DSME),MSC
+Container,MSC Ludovica,6750 ,TEU,85844 ,75590 ,Panama,2003 ,4 ,Daewoo (DSME),NSB Niederelbe
+Container,MSC Florentina,6750 ,TEU,85844 ,75590 ,Panama,2003 ,6 ,Daewoo (DSME),NSB Niederelbe
+Container,MSC Maureen,6750 ,TEU,85832 ,75590 ,Panama,2003 ,8 ,Daewoo (DSME),NSB Niederelbe
+Container,Ilse Wulff,6540 ,TEU,85824 ,75604 ,Liberia,2009 ,3 ,Hyundai HI,Wulff Reederei
+Container,RDO Concord,6969 ,TEU,85824 ,73819 ,Liberia,2009 ,7 ,Hyundai HI,"Oltmann, D."
+Container,RDO Concert,6969 ,TEU,85824 ,75604 ,Liberia,2009 ,11 ,Hyundai HI,"Oltmann, D."
+Container,MSC Flaminia,6750 ,TEU,85823 ,75590 ,Malta,2001 ,8 ,Daewoo (DSME),NSB Niederelbe
+Container,MSC Marina,6402 ,TEU,85806 ,73819 ,Panama,2003 ,11 ,Hyundai HI,MSC
+Container,Washington,6969 ,TEU,85760 ,75582 ,Hong Kong,2009 ,4 ,Hyundai HI,Synergy Marine Ltd.
+Container,Texas,6969 ,TEU,85760 ,75582 ,Hong Kong,2009 ,5 ,Hyundai HI,Synergy Marine Ltd.
+Container,Astrid Schulte,6969 ,TEU,85760 ,75582 ,Malta,2009 ,6 ,Hyundai HI,Schulte Group
+Container,Adrian Schulte,6969 ,TEU,85760 ,75582 ,Malta,2009 ,8 ,Hyundai HI,Schulte Group
+Container,Anton Schulte,6969 ,TEU,85760 ,75582 ,Malta,2009 ,9 ,Hyundai HI,Schulte Group
+Container,Agios Dimitrios,6572 ,TEU,85701 ,74175 ,Liberia,2011 ,2 ,Hanjin HI (Yeongdo),Technomar Shipping
+Container,MSC Stella,6402 ,TEU,85680 ,73819 ,Panama,2004 ,6 ,Hyundai Samho HI,MSC
+Container,Hatta,6921 ,TEU,85614 ,75579 ,United Arab Emirates,2008 ,2 ,Hyundai HI,United Arab Shpg.
+Container,Miramarin,6477 ,TEU,85522 ,73779 ,Malta,2010 ,2 ,Hanjin HI (Yeongdo),Dryships
+Container,Al Bahia,6921 ,TEU,85517 ,75579 ,United Arab Emirates,2008 ,4 ,Hyundai HI,United Arab Shpg.
+Container,Mayssan,6921 ,TEU,85517 ,75579 ,Bahrain,2008 ,5 ,Hyundai HI,United Arab Shpg.
+Container,Al Manamah,6921 ,TEU,85517 ,75579 ,Bahrain,2008 ,6 ,Hyundai HI,United Arab Shpg.
+Container,Jazan,6921 ,TEU,85463 ,75579 ,Saudi Arabia,2008 ,7 ,Hyundai HI,United Arab Shpg.
+Container,CMA CGM Maupassant,6477 ,TEU,85450 ,73779 ,United Kingdom,2010 ,9 ,Hanjin HI (Yeongdo),CMA-CGM
+Container,CMA CGM Lamartine,6477 ,TEU,85446 ,73779 ,United Kingdom,2010 ,6 ,Hanjin HI (Yeongdo),CMA-CGM
+Container,Al Safat,6921 ,TEU,85437 ,75579 ,Kuwait,2008 ,1 ,Hyundai HI,United Arab Shpg.
+Container,Al Hilal,6921 ,TEU,85437 ,75579 ,Qatar,2008 ,9 ,Hyundai HI,United Arab Shpg.
+Container,CMA CGM Corneille,6477 ,TEU,85408 ,73779 ,Liberia,2009 ,5 ,Hanjin HI (Yeongdo),CMA-CGM
+Container,Northern Magnum,6750 ,TEU,85400 ,75590 ,Germany,2003 ,10 ,Daewoo (DSME),NVA Norddeutsche
+Container,Northern Magnitude,6750 ,TEU,85400 ,75590 ,Germany,2003 ,12 ,Daewoo (DSME),NVA Norddeutsche
+Container,Northern Majestic,6750 ,TEU,85400 ,75590 ,Germany,2004 ,2 ,Daewoo (DSME),NVA Norddeutsche
+Container,Northern Monument,6750 ,TEU,85400 ,75590 ,Germany,2004 ,4 ,Daewoo (DSME),NVA Norddeutsche
+Container,Al Rawdah,6921 ,TEU,85326 ,75579 ,Marshall Islands,2008 ,10 ,Hyundai HI,United Arab Shpg.
+Container,MSC Melissa,6730 ,TEU,85250 ,73819 ,Panama,2002 ,1 ,Hyundai HI,MSC
+Container,MSC Marianna,6730 ,TEU,85250 ,73819 ,Panama,2002 ,3 ,Hyundai HI,MSC
+Container,MSC Barbara,6730 ,TEU,85250 ,73819 ,Panama,2002 ,5 ,Hyundai HI,MSC
+Container,MSC Michaela,6730 ,TEU,85250 ,73819 ,Panama,2002 ,5 ,Hyundai HI,MSC
+Container,MSC Loretta,6730 ,TEU,85250 ,73819 ,Panama,2002 ,7 ,Hyundai HI,MSC
+Container,MSC Methoni,6724 ,TEU,85250 ,73819 ,Liberia,2003 ,6 ,Hyundai HI,Costamare Shipping
+Container,Hyundai Singapore,6763 ,TEU,85250 ,74651 ,Cyprus,2006 ,10 ,Hyundai HI,Navios Group
+Container,Kristina,6673 ,TEU,85000 ,71021 ,Marshall Islands,2013 ,3 ,Hyundai Samho HI,Technomar Shipping
+Container,Safmarine Highveld,6673 ,TEU,85000 ,71021 ,Marshall Islands,2013 ,4 ,Hyundai Samho HI,Technomar Shipping
+Container,MSC Alessia,6750 ,TEU,84920 ,75590 ,Germany,2001 ,11 ,Daewoo (DSME),NSB Niederelbe
+Container,MSC Laura,6750 ,TEU,84920 ,75590 ,Panama,2002 ,1 ,Daewoo (DSME),MSC
+Container,MSC Luisa,6750 ,TEU,84920 ,75590 ,Panama,2002 ,3 ,Daewoo (DSME),MSC
+Container,Maersk Memphis,6188 ,TEU,84868 ,74642 ,United States,2007 ,1 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Detroit,6696 ,TEU,84783 ,74642 ,United States,2008 ,5 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Pittsburgh,6696 ,TEU,84783 ,74642 ,United States,2008 ,7 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Denver,6200 ,TEU,84783 ,74642 ,United States,2007 ,8 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Hartford,6200 ,TEU,84783 ,74642 ,United Kingdom,2007 ,9 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Kensington,6200 ,TEU,84783 ,74642 ,United States,2008 ,1 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Kinloss,6200 ,TEU,84783 ,74642 ,United States,2008 ,3 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Chicago,6188 ,TEU,84775 ,74642 ,United States,2007 ,3 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Maersk Columbus,6188 ,TEU,84704 ,74642 ,United States,2007 ,5 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,Kota Cahaya,6606 ,TEU,84700 ,76097 ,Singapore,2012 ,8 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Cantik,6606 ,TEU,84700 ,76097 ,Singapore,2012 ,9 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Cabar,6606 ,TEU,84700 ,76097 ,Singapore,2012 ,11 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Cempaka,6606 ,TEU,84700 ,76097 ,Singapore,2013 ,9 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Cepat,6606 ,TEU,84700 ,76097 ,Singapore,2013 ,11 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Maersk Atlanta,6188 ,TEU,84676 ,74642 ,United States,2006 ,12 ,Hanjin HI (Yeongdo),A.P. Moller
+Container,HS Paris,6552 ,TEU,84155 ,75015 ,Liberia,2012 ,12 ,Jiangsu Rongsheng,Hansa Treuhand
+Container,HS Rome,6552 ,TEU,84154 ,75015 ,Liberia,2014 ,7 ,Jiangsu Rongsheng,Hansa Treuhand
+Container,Kota Carum,6606 ,TEU,83963 ,76097 ,Singapore,2011 ,11 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,YM Mandate,6572 ,TEU,83400 ,73675 ,Liberia,2010 ,5 ,Hanjin HI (Yeongdo),Danaos Shpg.
+Container,YM Maturity,6500 ,TEU,83400 ,73675 ,Liberia,2010 ,7 ,Hanjin HI (Yeongdo),Danaos Shpg.
+Container,CMA CGM Nerval,6554 ,TEU,83319 ,72884 ,Malta,2010 ,5 ,Sungdong SB,Danaos Shpg.
+Container,CMA CGM Rabelais,6554 ,TEU,83317 ,72884 ,Malta,2010 ,7 ,Sungdong SB,Danaos Shpg.
+Container,CMA CGM Moliere,6554 ,TEU,83293 ,72884 ,Malta,2009 ,9 ,Sungdong SB,Danaos Shpg.
+Container,CMA CGM Musset,6554 ,TEU,83264 ,72884 ,Malta,2010 ,3 ,Sungdong SB,Danaos Shpg.
+Container,CMA CGM Racine,6554 ,TEU,83217 ,72884 ,Malta,2010 ,8 ,Sungdong SB,Danaos Shpg.
+Container,Swaziland,6208 ,TEU,82275 ,76800 ,Liberia,1998 ,1 ,MHI Nagasaki,Zodiac Maritime Agy
+Container,Mozambique,6400 ,TEU,82275 ,76847 ,Liberia,1998 ,5 ,MHI Nagasaki,Eastern Pacific Shpg
+Container,Zambia,6148 ,TEU,82271 ,76847 ,Liberia,1998 ,4 ,Mitsui Shipbuilding,Zodiac Maritime Agy
+Container,MSC Geneva,6300 ,TEU,82000 ,65000 ,Madeira,2006 ,7 ,Daewoo-Mangalia,Gebab
+Container,Lesotho,6342 ,TEU,81819 ,75637 ,Liberia,1997 ,10 ,I.H.I.,Eastern Pacific Shpg
+Container,Botswana,6342 ,TEU,81819 ,75637 ,Liberia,1998 ,1 ,I.H.I.,Eastern Pacific Shpg
+Container,Sea-Land Illinois,6648 ,TEU,81577 ,74583 ,Malta,2000 ,12 ,Hyundai HI,Costamare Shipping
+Container,Sea-Land Michigan,6648 ,TEU,81574 ,74583 ,Malta,2000 ,10 ,Hyundai HI,Costamare Shipping
+Container,Sea-Land New York,6648 ,TEU,81462 ,74661 ,Malta,2000 ,5 ,Hyundai HI,Costamare Shipping
+Container,NYK Aquarius,6492 ,TEU,81171 ,75484 ,Panama,2003 ,11 ,I.H.I.,Kaisho Shipping Co.
+Container,NYK Argus,6200 ,TEU,81171 ,75484 ,Panama,2004 ,2 ,I.H.I.,Kaisho Shipping Co.
+Container,NYK Atlas,6200 ,TEU,81171 ,75484 ,Panama,2004 ,7 ,I.H.I.,Kaisho Shipping Co.
+Container,NYK Apollo,6492 ,TEU,81171 ,75484 ,Panama,2002 ,11 ,I.H.I.,Kaisho Shipping Co.
+Container,NYK Artemis,6492 ,TEU,81171 ,75484 ,Panama,2003 ,2 ,I.H.I.,Kaisho Shipping Co.
+Container,Abyan,6500 ,TEU,81112 ,75395 ,Iran,2008 ,4 ,Hyundai HI,HDS Lines
+Container,Pucon,6541 ,TEU,81099 ,73934 ,Marshall Islands,2006 ,8 ,Hyundai HI,Diana Shipping
+Container,Maersk Kolkata,6644 ,TEU,81094 ,74661 ,Malta,2003 ,1 ,Hyundai HI,Costamare Shipping
+Container,Maersk Kingston,6644 ,TEU,81094 ,74661 ,Malta,2003 ,4 ,Hyundai HI,Costamare Shipping
+Container,Maersk Kalamata,6644 ,TEU,81094 ,74661 ,Malta,2003 ,6 ,Hyundai HI,Costamare Shipping
+Container,Maersk Kobe,6648 ,TEU,81094 ,71340 ,Malta,2000 ,6 ,Hyundai HI,Costamare Shipping
+Container,Sea-Land Washington,6648 ,TEU,81094 ,71340 ,Malta,2000 ,8 ,Hyundai HI,Costamare Shipping
+Container,Zardis,6500 ,TEU,81021 ,75395 ,Iran,2008 ,10 ,Hyundai HI,Soroush Sarzamin
+Container,Maule,6589 ,TEU,81002 ,75752 ,Liberia,2010 ,4 ,CSBC (Kaohsiung),Allseas Marine S. A.
+Container,Maipo,6589 ,TEU,81002 ,75752 ,Liberia,2010 ,8 ,CSBC (Kaohsiung),Hapag-Lloyd
+Container,Mataquito,6589 ,TEU,81002 ,75752 ,Liberia,2010 ,10 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Mehuin,6589 ,TEU,81002 ,75752 ,Liberia,2011 ,8 ,CSBC (Kaohsiung),Hapag-Lloyd
+Container,Malleco,6589 ,TEU,81002 ,75752 ,Liberia,2009 ,10 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Cap Arnauti,6612 ,TEU,80905 ,69809 ,Liberia,2013 ,8 ,HHIC-Phil (Subic SY),Eastern Pacific Shpg
+Container,Cap Andreas,6612 ,TEU,80905 ,69809 ,Liberia,2013 ,8 ,HHIC-Phil (Subic SY),Zodiac Maritime Agy
+Container,Hanjin Budapest,6655 ,TEU,80866 ,74962 ,Panama,2006 ,9 ,Hyundai Samho HI,Hanjin Group
+Container,Hanjin Bremerhaven,6655 ,TEU,80855 ,74962 ,Panama,2006 ,7 ,Hyundai HI,Hanjin Group
+Container,Hanjin Tianjin,6655 ,TEU,80855 ,74962 ,Panama,2007 ,1 ,Hyundai HI,Hanjin Group
+Container,Hanjin Xiamen,6655 ,TEU,80855 ,74962 ,Panama,2007 ,2 ,Hyundai HI,Hanjin Group
+Container,Hanjin Mumbai,6655 ,TEU,80855 ,74962 ,Panama,2007 ,12 ,Hyundai HI,Hanjin Group
+Container,Hanjin Shenzhen,6655 ,TEU,80855 ,74962 ,Panama,2008 ,2 ,Hyundai HI,Hanjin Group
+Container,Hanjin Chongqing,6655 ,TEU,80855 ,74962 ,Panama,2008 ,2 ,Hyundai HI,Hanjin Group
+Container,Hanjin Port Kelang,6655 ,TEU,80811 ,74962 ,Panama,2006 ,10 ,Hyundai Samho HI,Hanjin Group
+Container,DS Kingdom,6479 ,TEU,80596 ,74373 ,Liberia,2001 ,2 ,Hyundai HI,Dr. Peters
+Container,DS Republic,6479 ,TEU,80596 ,74373 ,Liberia,2001 ,3 ,Hyundai HI,Dr. Peters
+Container,DS National,6479 ,TEU,80596 ,74373 ,Liberia,2001 ,3 ,Hyundai HI,Dr. Peters
+Container,DS Dominion,6479 ,TEU,80596 ,74373 ,Liberia,2001 ,5 ,Hyundai HI,Dr. Peters
+Container,DS Patriot,6479 ,TEU,80596 ,74373 ,Liberia,2001 ,6 ,Hyundai HI,Dr. Peters
+Container,Cardiff,6612 ,TEU,80551 ,69809 ,Liberia,2014 ,1 ,HHIC-Phil (Subic SY),Zodiac Maritime Agy
+Container,Swansea,6612 ,TEU,80529 ,69809 ,Liberia,2014 ,1 ,HHIC-Phil (Subic SY),Zodiac Maritime Agy
+Container,Rio de la Plata,5905 ,TEU,80455 ,73899 ,Liberia,2008 ,4 ,Daewoo (DSME),Hamburg-Sud
+Container,Rio de Janeiro,5905 ,TEU,80455 ,73899 ,Germany,2008 ,6 ,Daewoo (DSME),Hamburg-Sud
+Container,Rio Negro,5905 ,TEU,80455 ,73899 ,Germany,2008 ,11 ,Daewoo (DSME),Hamburg-Sud
+Container,Safmarine Boland,6673 ,TEU,80350 ,71021 ,Marshall Islands,2013 ,1 ,Hyundai Samho HI,Technomar Shipping
+Container,NYK Terra,6500 ,TEU,80282 ,76928 ,Panama,2008 ,7 ,Hyundai HI,Nippon Yusen Kaisha
+Container,NYK Themis,6500 ,TEU,80282 ,76928 ,Panama,2008 ,10 ,Hyundai HI,Nippon Yusen Kaisha
+Container,NYK Theseus,6500 ,TEU,80282 ,76928 ,Panama,2008 ,11 ,Hyundai HI,Nippon Yusen Kaisha
+Container,NYK Triton,6500 ,TEU,80282 ,76928 ,Panama,2009 ,1 ,Hyundai HI,Nippon Yusen Kaisha
+Container,Mary,6673 ,TEU,80274 ,71021 ,Marshall Islands,2013 ,1 ,Hyundai Samho HI,Technomar Shipping
+Container,K Pegasus,6492 ,TEU,80270 ,76199 ,Liberia,2003 ,7 ,Koyo Dock K.K.,Zodiac Maritime Agy
+Container,K Phoenix,6492 ,TEU,80270 ,76199 ,Liberia,2003 ,11 ,Koyo Dock K.K.,Zodiac Maritime Agy
+Container,NYK Aphrodite,6492 ,TEU,80270 ,76199 ,Panama,2003 ,4 ,I.H.I.,Kaisho Shipping Co.
+Container,NYK Athena,6492 ,TEU,80270 ,76199 ,Panama,2003 ,6 ,I.H.I.,Kaisho Shipping Co.
+Container,Hyundai Shanghai,6763 ,TEU,80262 ,74651 ,Cyprus,2006 ,4 ,Hyundai HI,Navios Group
+Container,CMA CGM Berlioz,6621 ,TEU,80251 ,73157 ,Cyprus,2001 ,7 ,Hanjin HI (Yeongdo),Global Ship Lease
+Container,Diaporos,6627 ,TEU,80251 ,73157 ,Liberia,2001 ,9 ,Hanjin HI (Yeongdo),Embiricos Group
+Container,JPS Debussy,6627 ,TEU,80251 ,73157 ,Greece,2001 ,11 ,Hanjin HI (Yeongdo),Samartzis Maritime
+Container,Pangal,6541 ,TEU,80250 ,73934 ,Liberia,2006 ,11 ,Hyundai HI,Peter Dohle Schiff.
+Container,Puelo,6541 ,TEU,80250 ,73934 ,Marshall Islands,2006 ,11 ,Hyundai HI,Diana Shipping
+Container,Petrohue,6541 ,TEU,80250 ,73934 ,Liberia,2006 ,11 ,Hyundai HI,Peter Dohle Schiff.
+Container,Palena,6541 ,TEU,80250 ,73934 ,Liberia,2006 ,12 ,Hyundai HI,Hapag-Lloyd
+Container,Puelche,6541 ,TEU,80250 ,73934 ,Liberia,2007 ,1 ,Hyundai HI,Peter Dohle Schiff.
+Container,Maersk Elgin,6881 ,TEU,80228 ,71112 ,Liberia,2013 ,1 ,Hyundai Samho HI,Embiricos Group
+Container,Maersk Langkloof,6881 ,TEU,80228 ,71112 ,Liberia,2013 ,1 ,Hyundai Samho HI,Embiricos Group
+Container,DAL Karoo,6881 ,TEU,80228 ,71112 ,Liberia,2013 ,3 ,Hyundai Samho HI,Embiricos Group
+Container,Kea,6881 ,TEU,80228 ,71112 ,Liberia,2013 ,8 ,Hyundai Samho HI,Embiricos Group
+Container,Rio Blanco,5905 ,TEU,80225 ,73899 ,Liberia,2009 ,6 ,Daewoo-Mangalia,Hamburg-Sud
+Container,Rio Bravo,5905 ,TEU,80225 ,73899 ,Liberia,2009 ,8 ,Daewoo-Mangalia,Hamburg-Sud
+Container,Rio Madeira,5905 ,TEU,80225 ,73899 ,Liberia,2009 ,11 ,Daewoo-Mangalia,Hamburg-Sud
+Container,Maullin,6589 ,TEU,80200 ,75752 ,Liberia,2010 ,5 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Hyundai Colombo,6763 ,TEU,80108 ,74651 ,Panama,2007 ,1 ,Hyundai HI,Hyundai Group
+Container,Hyundai Bangkok,6763 ,TEU,80108 ,74651 ,Panama,2007 ,1 ,Hyundai HI,Hyundai Group
+Container,Hyundai Jakarta,6763 ,TEU,80108 ,74651 ,Panama,2007 ,4 ,Hyundai HI,Hyundai Group
+Container,Hyundai Busan,6763 ,TEU,80102 ,74651 ,Cyprus,2006 ,6 ,Hyundai HI,Navios Group
+Container,Hyundai Hongkong,6763 ,TEU,80102 ,74651 ,Cyprus,2006 ,7 ,Hyundai HI,Navios Group
+Container,Paxi,6800 ,TEU,80087 ,70262 ,Liberia,2014 ,10 ,HHIC-Phil (Subic SY),Embiricos Group
+Container,Hyundai Tokyo,6763 ,TEU,80059 ,74651 ,Cyprus,2006 ,9 ,Hyundai HI,Navios Group
+Container,Cape Chronos,6900 ,TEU,79880 ,70704 ,Cyprus,2015 ,6 ,HHIC-Phil (Subic SY),Cape Shipping
+Container,YM Mutuality,6589 ,TEU,79780 ,74900 ,Liberia,2011 ,4 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Mobility,6589 ,TEU,79780 ,74900 ,Liberia,2011 ,5 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Milestone,6589 ,TEU,79780 ,74900 ,Liberia,2011 ,10 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Masculinity,6589 ,TEU,79780 ,74900 ,Liberia,2012 ,4 ,CSBC (Kaohsiung),Yang Ming
+Container,Buxcoast,6456 ,TEU,79559 ,72760 ,Madeira,2001 ,9 ,Daewoo (DSME),NSB Niederelbe
+Container,Buxcliff,6456 ,TEU,79501 ,72760 ,Madeira,2001 ,6 ,Daewoo (DSME),Gebab
+Container,Agios Minas,6712 ,TEU,79465 ,73059 ,Liberia,2001 ,12 ,Daewoo (DSME),Embiricos Group
+Container,MOL Marvel,6724 ,TEU,79423 ,78316 ,Marshall Islands,2010 ,9 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,MOL Maneuver,6724 ,TEU,79423 ,78316 ,Marshall Islands,2011 ,5 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,MOL Mission,6724 ,TEU,79423 ,78316 ,Marshall Islands,2011 ,3 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,MOL Motivator,6724 ,TEU,79423 ,78316 ,Marshall Islands,2011 ,4 ,MHI Nagasaki,Mitsui O.S.K. Lines
+Container,MOL Modern,6724 ,TEU,79423 ,78316 ,Marshall Islands,2011 ,2 ,MHI Nagasaki,Mitsui O.S.K. Lines
+Container,MOL Maestro,6724 ,TEU,79423 ,78316 ,Marshall Islands,2010 ,7 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,MOL Magnificence,6724 ,TEU,79423 ,78316 ,Marshall Islands,2009 ,8 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,MOL Majesty,6724 ,TEU,79423 ,78316 ,Marshall Islands,2010 ,5 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,MOL Matrix,6724 ,TEU,79423 ,78316 ,Marshall Islands,2010 ,4 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,MOL Maxim,6724 ,TEU,79423 ,78316 ,Marshall Islands,2010 ,6 ,MHI Kobe,Mitsui O.S.K. Lines
+Container,UASC Bubiyan,6800 ,TEU,79274 ,70704 ,Marshall Islands,2015 ,1 ,HHIC-Phil (Subic SY),Technomar Shipping
+Container,UASC Yas,6800 ,TEU,79274 ,70704 ,Marshall Islands,2015 ,2 ,HHIC-Phil (Subic SY),Technomar Shipping
+Container,Ever Smile,7024 ,TEU,78796 ,75246 ,United Kingdom,2006 ,6 ,MHI Kobe,Evergreen Marine
+Container,Ever Smart,7024 ,TEU,78716 ,75246 ,United Kingdom,2006 ,3 ,MHI Kobe,Evergreen Marine
+Container,Ever Shine,7024 ,TEU,78693 ,75246 ,United Kingdom,2005 ,9 ,MHI Kobe,Evergreen Marine
+Container,Ever Superb,7024 ,TEU,78661 ,75246 ,Panama,2006 ,8 ,MHI Kobe,Evergreen Marine
+Container,Ever Steady,7024 ,TEU,78661 ,75246 ,Panama,2006 ,12 ,MHI Kobe,Evergreen Marine
+Container,Ever Strong,7024 ,TEU,78661 ,75246 ,Panama,2007 ,3 ,MHI Kobe,Evergreen Marine
+Container,Ever Summit,7024 ,TEU,78661 ,75246 ,Panama,2007 ,6 ,MHI Kobe,Evergreen Marine
+Container,Ever Safety,7024 ,TEU,78661 ,75246 ,Panama,2007 ,8 ,MHI Kobe,Evergreen Marine
+Container,Ever Salute,7024 ,TEU,78661 ,75246 ,Panama,2008 ,1 ,MHI Kobe,Evergreen Marine
+Container,Ever Sigma,7024 ,TEU,78636 ,75246 ,United Kingdom,2005 ,11 ,MHI Kobe,Evergreen Marine
+Container,NYK Lynx,6178 ,TEU,77950 ,75201 ,Panama,2002 ,3 ,Samsung HI,Nippon Yusen Kaisha
+Container,NYK Lyra,6178 ,TEU,77950 ,75201 ,Panama,2002 ,7 ,Samsung HI,Nippon Yusen Kaisha
+Container,NYK Libra,6178 ,TEU,77900 ,75201 ,Panama,2002 ,8 ,Samsung HI,Nippon Yusen Kaisha
+Container,NYK Lodestar,6178 ,TEU,77900 ,75201 ,Panama,2001 ,9 ,Samsung HI,Nippon Yusen Kaisha
+Container,NYK Leo,6178 ,TEU,77900 ,75201 ,Panama,2002 ,1 ,Samsung HI,Nippon Yusen Kaisha
+Container,Conti Paris,6447 ,TEU,77755 ,73172 ,Germany,2001 ,5 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Conti Lyon,6447 ,TEU,77220 ,73172 ,Germany,2001 ,6 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Ever Eagle,6046 ,TEU,75873 ,76067 ,United Kingdom,2001 ,10 ,MHI Kobe,Evergreen Marine
+Container,Ever Envoy,6046 ,TEU,75873 ,76067 ,United Kingdom,2002 ,1 ,MHI Kobe,Evergreen Marine
+Container,Ever Excel,6046 ,TEU,75873 ,76067 ,United Kingdom,2002 ,6 ,MHI Kobe,Evergreen Marine
+Container,Ever Elite,6046 ,TEU,75873 ,76067 ,United Kingdom,2002 ,9 ,MHI Kobe,Evergreen Marine
+Container,Ever Ethic,6046 ,TEU,75873 ,76067 ,United Kingdom,2003 ,1 ,MHI Kobe,Evergreen Marine
+Container,MSC Coruna,5550 ,TEU,74505 ,61870 ,Liberia,2011 ,12 ,Daewoo-Mangalia,Reederei C-P Offen
+Container,MSC Alicante,5550 ,TEU,74477 ,61870 ,Liberia,2011 ,6 ,Daewoo-Mangalia,Reederei C-P Offen
+Container,Performance,6400 ,TEU,74453 ,74071 ,Malta,2002 ,3 ,I.H.I.,Danaos Shpg.
+Container,MSC Damla,6400 ,TEU,74453 ,74071 ,Panama,2002 ,5 ,I.H.I.,MSC
+Container,Priority,6400 ,TEU,74453 ,74071 ,Malta,2002 ,6 ,I.H.I.,Danaos Shpg.
+Container,MOL Precision,6350 ,TEU,74453 ,74071 ,Panama,2002 ,2 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,MOL Promise,6350 ,TEU,74453 ,74071 ,Singapore,2002 ,3 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,MSC Barcelona,5550 ,TEU,73840 ,61870 ,Liberia,2011 ,9 ,Daewoo-Mangalia,Reederei C-P Offen
+Container,MSC Madrid,5550 ,TEU,73840 ,61870 ,Liberia,2011 ,10 ,Daewoo-Mangalia,Reederei C-P Offen
+Container,MSC Cadiz,5550 ,TEU,73840 ,61870 ,Liberia,2011 ,11 ,Daewoo-Mangalia,Reederei C-P Offen
+Container,MSC Vigo,5550 ,TEU,73840 ,61870 ,Liberia,2012 ,2 ,Daewoo-Mangalia,Reederei C-P Offen
+Container,MSC Fiammetta,5782 ,TEU,73355 ,66399 ,Panama,2008 ,3 ,Samsung HI,MSC
+Container,MSC Krystal,5782 ,TEU,73355 ,66399 ,Panama,2008 ,4 ,Samsung HI,MSC
+Container,MSC Oriane,5782 ,TEU,73355 ,66399 ,Panama,2008 ,4 ,Samsung HI,MSC
+Container,MSC Soraya,5782 ,TEU,73355 ,66399 ,Panama,2008 ,7 ,Samsung HI,MSC
+Container,CMA CGM Bellini,5770 ,TEU,73235 ,65247 ,Bahamas,2004 ,3 ,Samsung HI,CMA-CGM
+Container,CMA CGM Chopin,5770 ,TEU,73235 ,65730 ,Malta,2004 ,5 ,Samsung HI,CMA-CGM
+Container,CMA CGM Mozart,5700 ,TEU,73235 ,65247 ,France,2004 ,6 ,Samsung HI,CMA-CGM
+Container,CMA CGM Puccini,5700 ,TEU,73235 ,65247 ,Malta,2004 ,7 ,Samsung HI,CMA-CGM
+Container,CMA CGM Rossini,5700 ,TEU,73235 ,65247 ,France,2004 ,8 ,Samsung HI,CMA-CGM
+Container,CMA CGM Strauss,5700 ,TEU,73235 ,65247 ,Liberia,2004 ,9 ,Samsung HI,Technomar Shipping
+Container,CMA CGM Verdi,5700 ,TEU,73235 ,65247 ,Liberia,2004 ,10 ,Samsung HI,Technomar Shipping
+Container,CMA CGM Wagner,5700 ,TEU,73235 ,65247 ,Liberia,2004 ,10 ,Samsung HI,Peter Dohle Schiff.
+Container,Hyundai Long Beach,6350 ,TEU,72982 ,71786 ,Liberia,2009 ,1 ,Koyo Dock K.K.,Eastern Pacific Shpg
+Container,MOL Pace,6350 ,TEU,72968 ,71902 ,Singapore,2006 ,1 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,MOL Prestige,6350 ,TEU,72968 ,71902 ,Singapore,2006 ,8 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,MOL Prosperity,6350 ,TEU,72968 ,71902 ,Singapore,2006 ,9 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,MOL Partner,6350 ,TEU,72968 ,71902 ,Panama,2005 ,8 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,MOL Paradise,6350 ,TEU,72968 ,71902 ,Singapore,2005 ,9 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,MOL Paramount,6350 ,TEU,72968 ,71902 ,Panama,2005 ,11 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,APL New Jersey,6350 ,TEU,72912 ,71787 ,Liberia,2008 ,7 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,APL Florida,6350 ,TEU,72912 ,71787 ,Singapore,2008 ,9 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,APL California,6350 ,TEU,72912 ,71787 ,Singapore,2009 ,1 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,APL Minnesota,6350 ,TEU,72912 ,71787 ,Liberia,2008 ,5 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,APL Turkey,6350 ,TEU,72912 ,87865 ,Liberia,2009 ,9 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,APL Oregon,6350 ,TEU,72912 ,87865 ,Singapore,2010 ,3 ,Koyo Dock K.K.,Nissen Kaiun K.K.
+Container,San Francisco Bridge,6350 ,TEU,72912 ,71787 ,Panama,2010 ,6 ,Koyo Dock K.K.,Shunzan Kaiun K.K.
+Container,San Diego Bridge,6350 ,TEU,72912 ,71787 ,Panama,2010 ,7 ,Koyo Dock K.K.,K-Line
+Container,Seattle Bridge,6350 ,TEU,72912 ,71787 ,Panama,2010 ,6 ,Koyo Dock K.K.,K-Line
+Container,Zim London,6350 ,TEU,72665 ,71786 ,United Kingdom,2008 ,3 ,Koyo Dock K.K.,Zodiac Maritime Agy
+Container,Rotterdam,6350 ,TEU,72665 ,71786 ,Hong Kong,2008 ,7 ,Koyo Dock K.K.,Synergy Marine Ltd.
+Container,Hamburg,6350 ,TEU,72665 ,71786 ,Hong Kong,2009 ,3 ,Koyo Dock K.K.,Synergy Marine Ltd.
+Container,Zim Hamburg,6350 ,TEU,72665 ,71786 ,Liberia,2009 ,4 ,Koyo Dock K.K.,Eastern Pacific Shpg
+Container,Hyundai New York,6350 ,TEU,72665 ,71786 ,Singapore,2009 ,7 ,Koyo Dock K.K.,Eastern Pacific Shpg
+Container,Hyundai Tacoma,6350 ,TEU,72665 ,71786 ,Liberia,2009 ,2 ,Koyo Dock K.K.,Eastern Pacific Shpg
+Container,Hyundai Oakland,6350 ,TEU,72665 ,71786 ,United Kingdom,2009 ,6 ,Koyo Dock K.K.,Zodiac Maritime Agy
+Container,YM Movement,6258 ,TEU,72370 ,71821 ,Panama,2013 ,7 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,YM Modesty,6258 ,TEU,72370 ,71821 ,Liberia,2013 ,11 ,Koyo Dock K.K.,Zodiac Maritime Agy
+Container,YM Moderation,6258 ,TEU,72370 ,71821 ,Panama,2014 ,3 ,Imabari SB Hiroshima,Imabari Shipbuilding
+Container,MSC Shanghai,5962 ,TEU,72064 ,65483 ,Liberia,2005 ,8 ,Hyundai Samho HI,Reederei C-P Offen
+Container,MSC Marta,5606 ,TEU,72045 ,65483 ,Panama,2005 ,11 ,Hyundai Samho HI,MSC
+Container,MSC Carolina,5606 ,TEU,72037 ,65483 ,Panama,2005 ,10 ,Hyundai Samho HI,MSC
+Container,MSC Tokyo,5962 ,TEU,71949 ,65483 ,Liberia,2005 ,7 ,Hyundai Samho HI,Reederei C-P Offen
+Container,MOL Proficiency,6350 ,TEU,71876 ,72807 ,Marshall Islands,2007 ,7 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,APL Norway,6350 ,TEU,71876 ,72807 ,Liberia,2007 ,10 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,MOL Premium,6350 ,TEU,71876 ,72807 ,Panama,2008 ,1 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,APL Austria,6350 ,TEU,71876 ,72807 ,Liberia,2007 ,11 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,MOL Presence,6350 ,TEU,71876 ,72807 ,Singapore,2008 ,3 ,Koyo Dock K.K.,Mitsui & Co
+Container,Hyundai Vancouver,6250 ,TEU,71500 ,71786 ,United Kingdom,2010 ,9 ,Koyo Dock K.K.,Zodiac Maritime Agy
+Container,MOL Gateway,5595 ,TEU,71429 ,59307 ,Liberia,2011 ,5 ,Hyundai Samho HI,Peter Dohle Schiff.
+Container,MOL Guardian,5595 ,TEU,71416 ,59307 ,Liberia,2011 ,11 ,Hyundai Samho HI,Peter Dohle Schiff.
+Container,MOL Garland,5595 ,TEU,71409 ,59307 ,Madeira,2011 ,6 ,Hyundai Samho HI,Peter Dohle Schiff.
+Container,MOL Globe,5595 ,TEU,71407 ,59307 ,Hong Kong,2011 ,4 ,Hyundai Samho HI,Schulte Group
+Container,Ensenada Express,5576 ,TEU,71376 ,68687 ,Liberia,2001 ,8 ,Koyo Dock K.K.,Costamare Shipping
+Container,Chicago Bridge,5610 ,TEU,71376 ,68687 ,Panama,2001 ,10 ,Koyo Dock K.K.,K-Line
+Container,Wan Hai 611,5610 ,TEU,71366 ,68687 ,Singapore,2001 ,7 ,Hyundai HI,Wan Hai Lines
+Container,Wan Hai 162,5610 ,TEU,71366 ,68687 ,Singapore,2001 ,9 ,Hyundai HI,Wan Hai Lines
+Container,James River Bridge,5610 ,TEU,71366 ,68687 ,Panama,2001 ,9 ,Hyundai HI,K-Line
+Container,Akinada Bridge,5610 ,TEU,71366 ,68687 ,Panama,2001 ,11 ,Hyundai HI,Eurobulk Ltd.
+Container,Chiswick Bridge,5610 ,TEU,71366 ,68687 ,Panama,2001 ,12 ,Hyundai HI,K-Line
+Container,Tsing Ma Bridge,5608 ,TEU,71366 ,68687 ,Panama,2002 ,3 ,Hyundai HI,Osaka Asahi Kaiun
+Container,Suez Canal Bridge,5608 ,TEU,71366 ,68687 ,Panama,2002 ,5 ,Hyundai HI,K-Line
+Container,MOL Glide,5595 ,TEU,71339 ,59307 ,Hong Kong,2011 ,9 ,Hyundai Samho HI,Schulte Group
+Container,George Washington Bridge,5624 ,TEU,71309 ,68570 ,Panama,2006 ,1 ,Hyundai HI,K-Line
+Container,Greenwich Bridge,5624 ,TEU,71270 ,68570 ,Panama,2006 ,3 ,Hyundai HI,K-Line
+Container,Glen Canyon Bridge,5624 ,TEU,71270 ,68570 ,Panama,2006 ,5 ,Hyundai HI,K-Line
+Container,Guang Dong Bridge,5624 ,TEU,71270 ,68570 ,Panama,2006 ,8 ,Hyundai HI,K-Line
+Container,Granville Bridge,5624 ,TEU,71270 ,68570 ,Panama,2006 ,9 ,Hyundai HI,Doun Kisen K.K.
+Container,Monte Azul,5552 ,TEU,71256 ,69132 ,Madeira,2008 ,10 ,Daewoo-Mangalia,Hamburg-Sud
+Container,Monte Alegre,5552 ,TEU,71256 ,69132 ,Germany,2009 ,1 ,Daewoo-Mangalia,Hamburg-Sud
+Container,Monte Aconcagua,5552 ,TEU,71256 ,69132 ,Germany,2009 ,3 ,Daewoo-Mangalia,Hamburg-Sud
+Container,MOL Grandeur,5595 ,TEU,70590 ,59307 ,Hong Kong,2011 ,6 ,Hyundai Samho HI,Schulte Group
+Container,MOL Gratitude,5595 ,TEU,70590 ,59307 ,Hong Kong,2012 ,1 ,Hyundai Samho HI,Schulte Group
+Container,MOL Genesis,5595 ,TEU,70590 ,59307 ,Liberia,2012 ,5 ,Hyundai Samho HI,Peter Dohle Schiff.
+Container,MOL Growth,5595 ,TEU,70590 ,59307 ,Hong Kong,2012 ,6 ,Hyundai Samho HI,Schulte Group
+Container,MOL Generosity,5595 ,TEU,70590 ,59307 ,Liberia,2012 ,7 ,Hyundai Samho HI,Peter Dohle Schiff.
+Container,Hyundai Highness,5711 ,TEU,69900 ,64054 ,Panama,1996 ,11 ,Hyundai HI,Hyundai Group
+Container,Conti Canberra,5618 ,TEU,69447 ,66278 ,Germany,1999 ,11 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Hanjin Copenhagen,5618 ,TEU,69447 ,66278 ,Germany,1999 ,12 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Hanjin Brussels,5618 ,TEU,69447 ,66278 ,Germany,2000 ,5 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Conti Stockholm,5618 ,TEU,69447 ,66278 ,Germany,2000 ,6 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Hanjin Ottawa,5618 ,TEU,69447 ,66278 ,Germany,2000 ,10 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,COSCO Felixstowe,5250 ,TEU,69285 ,65900 ,United Kingdom,2002 ,4 ,Nantong COSCO KHI,COSCO Group
+Container,Lu He,5250 ,TEU,69285 ,65140 ,Panama,1997 ,1 ,Kawasaki HI Sakaide,COSCO Group
+Container,Yue He,5446 ,TEU,69285 ,65140 ,Panama,1997 ,2 ,Kawasaki HI Sakaide,COSCO Group
+Container,Zhong Yuan Qing Dao,5446 ,TEU,69285 ,65140 ,Peoples' Republic of China,1997 ,3 ,Kawasaki HI Sakaide,COSCO Group
+Container,Wan He,5446 ,TEU,69285 ,65140 ,Panama,1997 ,7 ,Kawasaki HI Sakaide,COSCO Group
+Container,Jing He,5446 ,TEU,69285 ,65140 ,Peoples' Republic of China,1997 ,9 ,Kawasaki HI Sakaide,COSCO Group
+Container,Chuan He,5446 ,TEU,69285 ,65140 ,Peoples' Republic of China,1997 ,11 ,Kawasaki HI Sakaide,COSCO Group
+Container,COSCO Singapore,5250 ,TEU,69207 ,65531 ,United Kingdom,2001 ,11 ,Kawasaki HI Sakaide,COSCO Group
+Container,COSCO Rotterdam,5250 ,TEU,69207 ,65531 ,United Kingdom,2002 ,2 ,Kawasaki HI Sakaide,COSCO Group
+Container,COSCO Hongkong,5250 ,TEU,69207 ,65531 ,United Kingdom,2002 ,3 ,Kawasaki HI Sakaide,COSCO Group
+Container,COSCO Antwerp,5250 ,TEU,69192 ,65531 ,United Kingdom,2001 ,9 ,Nantong COSCO KHI,COSCO Group
+Container,COSCO Shanghai,5250 ,TEU,69192 ,65531 ,United Kingdom,2001 ,7 ,Kawasaki HI Sakaide,COSCO Group
+Container,COSCO Hamburg,5250 ,TEU,69192 ,65531 ,United Kingdom,2001 ,10 ,Kawasaki HI Sakaide,COSCO Group
+Container,Xin Da Lian,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2003 ,2 ,Dalian New Yard,China Shipping Group
+Container,Xin Tian Jin,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2003 ,6 ,Dalian New Yard,China Shipping Group
+Container,Xin Lian Yun Gang,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2003 ,9 ,Dalian New Yard,China Shipping Group
+Container,Xin Yan Tian,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2004 ,1 ,Dalian New Yard,China Shipping Group
+Container,Xin Pu Dong,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2003 ,2 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Qing Dao,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2003 ,5 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Ning Bo,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2003 ,8 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Xia Men,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2004 ,2 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Chi Wan,5688 ,TEU,69023 ,66452 ,Peoples' Republic of China,2004 ,6 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Qin Huang Dao,5688 ,TEU,69023 ,66452 ,Peoples' Republic of China,2004 ,8 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Fu Zhou,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2004 ,9 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Yan Tai,5618 ,TEU,69023 ,66452 ,Peoples' Republic of China,2005 ,1 ,Hudong Zhonghua,China Shipping Group
+Container,Xin Chang Shu,5688 ,TEU,69023 ,66452 ,Peoples' Republic of China,2005 ,7 ,Hudong Zhonghua,China Shipping Group
+Container,Hanjin Rome,5308 ,TEU,68955 ,65469 ,South Korea,1998 ,8 ,Hanjin HI (Yeongdo),Hanjin Group
+Container,YM Success,5548 ,TEU,68615 ,64254 ,Liberia,2004 ,7 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Wealth,5500 ,TEU,68615 ,64254 ,Liberia,2004 ,3 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Fountain,5500 ,TEU,68615 ,64254 ,Liberia,2004 ,6 ,CSBC (Kaohsiung),Yang Ming
+Container,MSC Fortunate,5711 ,TEU,68537 ,64054 ,Panama,1996 ,9 ,Hyundai HI,Goldenport Holdgs.
+Container,MSC General,5711 ,TEU,68537 ,64054 ,Panama,1996 ,9 ,Hyundai HI,Hyundai Group
+Container,Rio Barrow,5551 ,TEU,68415 ,65059 ,Liberia,2001 ,1 ,Hyundai HI,MPC Group
+Container,YM Cypress,5512 ,TEU,68413 ,64254 ,Liberia,2001 ,4 ,Hyundai HI,Yang Ming
+Container,YM Green,5512 ,TEU,68413 ,64254 ,Liberia,2001 ,7 ,Hyundai HI,Yang Ming
+Container,YM Cosmos,5512 ,TEU,68413 ,64254 ,Panama,2001 ,2 ,Hyundai HI,Yang Ming
+Container,Freedom,5711 ,TEU,68363 ,64054 ,South Korea,1996 ,7 ,Hyundai HI,Hyundai Group
+Container,MSC Samantha,5711 ,TEU,68363 ,64054 ,Panama,1996 ,5 ,Hyundai HI,Eastern Pacific Shpg
+Container,MSC Katyayni,5711 ,TEU,68363 ,64054 ,Panama,1996 ,6 ,Hyundai HI,Zodiac Maritime Agy
+Container,MSC Dymphna,5711 ,TEU,68363 ,64054 ,Panama,1996 ,7 ,Hyundai HI,Eastern Pacific Shpg
+Container,YM Bamboo,5512 ,TEU,68303 ,64245 ,Liberia,2001 ,3 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Pine,5512 ,TEU,68303 ,64245 ,Liberia,2001 ,4 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Plum,5512 ,TEU,68280 ,64254 ,Panama,2000 ,9 ,Hyundai HI,Yang Ming
+Container,YM Orchid,5512 ,TEU,68280 ,64254 ,Panama,2000 ,12 ,Hyundai HI,Yang Ming
+Container,Hanjin Vienna,5744 ,TEU,68263 ,65918 ,Germany,2000 ,12 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Hanjin Geneva,5744 ,TEU,68263 ,65918 ,Germany,2001 ,1 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Conti Basel,5744 ,TEU,68252 ,65918 ,Madeira,2003 ,3 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Lisbon,5744 ,TEU,68252 ,65918 ,Madeira,2003 ,4 ,Hanjin HI (Yeongdo),NSB Niederelbe
+Container,Conti Madrid,5744 ,TEU,68252 ,65918 ,Madeira,2003 ,6 ,Hanjin HI (Yeongdo),Gebab
+Container,Tamina,5527 ,TEU,68228 ,66280 ,Liberia,2004 ,10 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Talassa,5527 ,TEU,68228 ,66280 ,Liberia,2005 ,2 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Tessa,5527 ,TEU,68228 ,66280 ,Liberia,2005 ,5 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Tabea,5527 ,TEU,68228 ,66280 ,Liberia,2006 ,2 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Allegoria,5527 ,TEU,68228 ,66280 ,Liberia,2006 ,4 ,CSBC (Kaohsiung),Peter Dohle Schiff.
+Container,Chacabuco,5527 ,TEU,68228 ,66280 ,Liberia,2006 ,7 ,CSBC (Kaohsiung),Hapag-Lloyd
+Container,MSC Vidhi,5762 ,TEU,68129 ,65900 ,Liberia,2001 ,10 ,Samsung HI,Fredriksen Group
+Container,Rio Blackwater,5250 ,TEU,68122 ,65054 ,Liberia,2000 ,11 ,Hyundai HI,MPC Group
+Container,Hanjin Helsinki,5447 ,TEU,68070 ,65131 ,Germany,2002 ,6 ,Hyundai HI,NSB Niederelbe
+Container,APL Holland,5506 ,TEU,68049 ,65792 ,Singapore,2001 ,7 ,Samsung HI,Neptune Orient Lines
+Container,Hanjin Gothenburg,5551 ,TEU,68045 ,67500 ,Germany,2002 ,9 ,Hyundai HI,NVA Norddeutsche
+Container,Venezia,5447 ,TEU,68045 ,65131 ,Hong Kong,2001 ,12 ,Hyundai HI,Synergy Marine Ltd.
+Container,Conti Taipei,5447 ,TEU,68045 ,65131 ,Germany,2002 ,2 ,Hyundai HI,NSB Niederelbe
+Container,Chicago,5744 ,TEU,68037 ,65918 ,Madeira,2003 ,7 ,Hanjin HI (Yeongdo),Gebab
+Container,E.R. Denmark,5762 ,TEU,68025 ,66300 ,Liberia,2002 ,6 ,Samsung HI,Blue Star Holding
+Container,E.R. India,5762 ,TEU,68025 ,65792 ,Liberia,2002 ,4 ,Samsung HI,Blue Star Holding
+Container,E.R. Sweden,5762 ,TEU,68024 ,65792 ,Liberia,2002 ,9 ,Samsung HI,Blue Star Holding
+Container,E.R. Canada,5762 ,TEU,68024 ,65792 ,Liberia,2001 ,12 ,Samsung HI,Blue Star Holding
+Container,Hyundai Confidence,5700 ,TEU,68020 ,64845 ,South Korea,2003 ,4 ,Hyundai HI,Hyundai Group
+Container,APL Scotland,5506 ,TEU,68017 ,65792 ,Singapore,2001 ,6 ,Samsung HI,Neptune Orient Lines
+Container,APL England,5506 ,TEU,67986 ,65792 ,Singapore,2001 ,2 ,Samsung HI,Neptune Orient Lines
+Container,APL Belgium,5506 ,TEU,67966 ,65792 ,United States,2002 ,1 ,Samsung HI,Neptune Orient Lines
+Container,HS Columbia,5551 ,TEU,67955 ,65131 ,Liberia,2001 ,10 ,Hyundai HI,Hansa Treuhand
+Container,Fleur,5248 ,TEU,67902 ,66526 ,Liberia,2000 ,3 ,Aker MTW Werft,Technomar Shipping
+Container,Ian H,5248 ,TEU,67902 ,66526 ,Liberia,2000 ,8 ,Aker MTW Werft,Technomar Shipping
+Container,Tasman,5248 ,TEU,67902 ,66526 ,Marshall Islands,2000 ,1 ,Kv. Warnowwerft,Technomar Shipping
+Container,Dimitris Y,5248 ,TEU,67902 ,66526 ,Liberia,2000 ,5 ,Kv. Warnowwerft,Technomar Shipping
+Container,Nedlloyd Barentsz,5248 ,TEU,67902 ,66526 ,Netherlands,2000 ,9 ,Kv. Warnowwerft,A.P. Moller
+Container,MSC Margarita,5762 ,TEU,67700 ,65900 ,Liberia,2002 ,3 ,Samsung HI,Fredriksen Group
+Container,Wan Hai 601,5527 ,TEU,67680 ,66199 ,Singapore,2007 ,7 ,CSBC (Kaohsiung),Wan Hai Lines
+Container,Wan Hai 602,5527 ,TEU,67680 ,66199 ,Singapore,2007 ,9 ,CSBC (Kaohsiung),Wan Hai Lines
+Container,Wan Hai 603,5527 ,TEU,67680 ,66199 ,Singapore,2007 ,11 ,CSBC (Kaohsiung),Wan Hai Lines
+Container,Japan,5344 ,TEU,67625 ,66046 ,Marshall Islands,1996 ,2 ,MHI Nagasaki,Technomar Shipping
+Container,Britain,5344 ,TEU,67625 ,66046 ,Marshall Islands,1996 ,3 ,MHI Kobe,Technomar Shipping
+Container,OOCL California,5344 ,TEU,67625 ,66046 ,Hong Kong,1995 ,8 ,MHI Nagasaki,Orient Overseas Intl
+Container,OOCL America,5344 ,TEU,67625 ,66046 ,Hong Kong,1995 ,11 ,MHI Nagasaki,Orient Overseas Intl
+Container,Box Hong Kong,5344 ,TEU,67625 ,66046 ,Liberia,1995 ,12 ,Samsung HI,Allseas Marine S. A.
+Container,OOCL China,5344 ,TEU,67625 ,66046 ,Hong Kong,1996 ,3 ,Samsung HI,Allseas Marine S. A.
+Container,Wan Hai 605,5527 ,TEU,67580 ,66199 ,Singapore,2008 ,1 ,CSBC (Kaohsiung),Wan Hai Lines
+Container,MSC Gemma,5762 ,TEU,67566 ,66289 ,Liberia,2000 ,8 ,Samsung HI,Blue Star Holding
+Container,E.R. Berlin,5762 ,TEU,67566 ,66289 ,Liberia,2000 ,12 ,Samsung HI,Blue Star Holding
+Container,MSC Antares,5642 ,TEU,67557 ,66289 ,Luxembourg,2000 ,9 ,Samsung HI,Blue Star Holding
+Container,MSC Mira,5762 ,TEU,67500 ,65900 ,Luxembourg,2000 ,10 ,Samsung HI,Blue Star Holding
+Container,OOCL New York,5762 ,TEU,67500 ,65900 ,Hong Kong,1999 ,12 ,Samsung HI,Orient Overseas Intl
+Container,OOCL Shanghai,5762 ,TEU,67500 ,65900 ,Hong Kong,1999 ,12 ,Samsung HI,Orient Overseas Intl
+Container,OOCL San Francisco,5714 ,TEU,67500 ,65900 ,Hong Kong,2000 ,9 ,CSBC (Kaohsiung),Orient Overseas Intl
+Container,E.R. Seoul,5762 ,TEU,67500 ,65900 ,Luxembourg,2000 ,6 ,Samsung HI,Blue Star Holding
+Container,E.R. Pusan,5762 ,TEU,67500 ,65900 ,Luxembourg,2000 ,4 ,Samsung HI,Blue Star Holding
+Container,E.R. France,5762 ,TEU,67500 ,66289 ,Liberia,2001 ,5 ,Samsung HI,Blue Star Holding
+Container,Suape Express,5754 ,TEU,67500 ,66289 ,Liberia,2001 ,6 ,Samsung HI,Blue Star Holding
+Container,Montevideo Express,5754 ,TEU,67500 ,66289 ,Liberia,2001 ,6 ,Samsung HI,Blue Star Holding
+Container,Singapore,5006 ,TEU,67473 ,66086 ,Hong Kong,1997 ,8 ,MHI Nagasaki,Technomar Shipping
+Container,Netherlands,5006 ,TEU,67473 ,66086 ,Hong Kong,1997 ,11 ,MHI Nagasaki,Technomar Shipping
+Container,OOCL Chicago,5642 ,TEU,67278 ,66677 ,Hong Kong,2000 ,10 ,CSBC (Kaohsiung),Orient Overseas Intl
+Container,Great,5576 ,TEU,67270 ,66332 ,Marshall Islands,2004 ,3 ,Koyo Dock K.K.,Diana Shipping
+Container,YM March,5576 ,TEU,67270 ,66332 ,Marshall Islands,2004 ,5 ,Koyo Dock K.K.,Diana Shipping
+Container,COSCO Xiamen,5576 ,TEU,67209 ,66380 ,Panama,2005 ,3 ,Koyo Dock K.K.,Nan Fung Shpng Ltd
+Container,COSCO Dalian,5576 ,TEU,67209 ,66380 ,Panama,2005 ,4 ,Koyo Dock K.K.,Nan Fung Shpng Ltd
+Container,COSCO Tianjin,5576 ,TEU,67209 ,66380 ,Panama,2005 ,5 ,Koyo Dock K.K.,Nan Fung Shpng Ltd
+Container,Genoa Bridge,5500 ,TEU,67197 ,66800 ,Panama,2002 ,9 ,Koyo Dock K.K.,K-Line
+Container,Ikaria,5908 ,TEU,67164 ,66332 ,Liberia,2002 ,5 ,Koyo Dock K.K.,Embiricos Group
+Container,Zante,5908 ,TEU,67164 ,66332 ,Liberia,2002 ,7 ,Koyo Dock K.K.,Embiricos Group
+Container,Folegandros,5908 ,TEU,67164 ,66332 ,Liberia,2001 ,12 ,Koyo Dock K.K.,Embiricos Group
+Container,Xin Zheng Zhou,4738 ,TEU,67041 ,47917 ,Peoples' Republic of China,2012 ,6 ,Jiangnan Changxing,China Shipping Group
+Container,APL Hong Kong,5928 ,TEU,67009 ,66462 ,Liberia,2002 ,10 ,Koyo Dock K.K.,Neptune Orient Lines
+Container,Venetiko,5928 ,TEU,67009 ,66462 ,Liberia,2003 ,1 ,Koyo Dock K.K.,Costamare Shipping
+Container,APL Germany,5888 ,TEU,67009 ,66462 ,Liberia,2003 ,11 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,APL Spain,5888 ,TEU,67009 ,66462 ,Singapore,2004 ,1 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,Xin Cang Zhou,4738 ,TEU,67001 ,47917 ,Peoples' Republic of China,2013 ,5 ,Jiangnan Changxing,China Shipping Group
+Container,OOCL Kuala Lumpur,5888 ,TEU,66940 ,66462 ,Singapore,2007 ,3 ,Koyo Dock K.K.,Mitsui & Co
+Container,Bremen Bridge 1,5888 ,TEU,66940 ,66462 ,Panama,2007 ,2 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,OOCL Oakland,5888 ,TEU,66940 ,66462 ,Panama,2007 ,5 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,OOCL Italy,5888 ,TEU,66940 ,66462 ,Singapore,2007 ,6 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,OOCL Vancouver,5888 ,TEU,66940 ,66462 ,Panama,2006 ,1 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,OOCL Kaohsiung,5888 ,TEU,66940 ,66462 ,Singapore,2006 ,3 ,Koyo Dock K.K.,Mitsui & Co
+Container,OOCL Antwerp,5888 ,TEU,66940 ,66462 ,Panama,2006 ,5 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,OOCL Dubai,5888 ,TEU,66940 ,66462 ,Singapore,2006 ,6 ,Koyo Dock K.K.,Mitsui & Co
+Container,Xin Xu Zhou,4738 ,TEU,66926 ,47917 ,Peoples' Republic of China,2013 ,3 ,Jiangnan Changxing,China Shipping Group
+Container,Xin Hui Zhou,4738 ,TEU,66903 ,47917 ,Peoples' Republic of China,2013 ,7 ,Jiangnan Changxing,China Shipping Group
+Container,Xin Qin Zhou,4738 ,TEU,66903 ,47917 ,Peoples' Republic of China,2012 ,3 ,Jiangnan Changxing,China Shipping Group
+Container,Xin Hang Zhou,4738 ,TEU,66903 ,47917 ,Peoples' Republic of China,2012 ,5 ,Jiangnan Changxing,China Shipping Group
+Container,Xin Lan Zhou,4738 ,TEU,66903 ,47917 ,Peoples' Republic of China,2012 ,6 ,Jiangnan Changxing,China Shipping Group
+Container,Xin Wen Zhou,4738 ,TEU,66903 ,47917 ,Peoples' Republic of China,2013 ,3 ,Jiangnan Changxing,China Shipping Group
+Container,MOL Integrity,5220 ,TEU,66800 ,66332 ,Panama,2001 ,6 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,MOL Solution,5220 ,TEU,66559 ,66332 ,Panama,2001 ,8 ,Koyo Dock K.K.,Mitsui O.S.K. Lines
+Container,APL Korea,4832 ,TEU,66520 ,64502 ,United States,1995 ,8 ,Daewoo (DSME),Neptune Orient Lines
+Container,APL Singapore,4832 ,TEU,66520 ,64502 ,United States,1995 ,11 ,Daewoo (DSME),Neptune Orient Lines
+Container,APL China,4832 ,TEU,66520 ,64502 ,United States,1995 ,5 ,Howaldtswerke Werft,Neptune Orient Lines
+Container,APL Japan,4832 ,TEU,66520 ,64502 ,Singapore,1995 ,8 ,Howaldtswerke Werft,Neptune Orient Lines
+Container,APL Thailand,4832 ,TEU,66520 ,64502 ,United States,1995 ,11 ,Howaldtswerke Werft,Neptune Orient Lines
+Container,MOL Advantage,5220 ,TEU,66332 ,66800 ,Panama,2001 ,3 ,Koyo Dock K.K.,Imabari Shipbuilding
+Container,APL Philippines,4832 ,TEU,65642 ,64502 ,United States,1996 ,1 ,Daewoo (DSME),Neptune Orient Lines
+Container,Maersk Euphrates,5466 ,TEU,65165 ,51872 ,Marshall Islands,2014 ,10 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Wide India,5466 ,TEU,65165 ,51872 ,Marshall Islands,2015 ,4 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Maersk Tema,5466 ,TEU,65163 ,51872 ,Marshall Islands,2015 ,5 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Maersk Indus,5466 ,TEU,65157 ,51872 ,Marshall Islands,2014 ,9 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Wide Alpha,5466 ,TEU,65152 ,51872 ,Marshall Islands,2014 ,6 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Wide Bravo,5466 ,TEU,65152 ,51872 ,Marshall Islands,2014 ,6 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Wide Charlie,5466 ,TEU,65152 ,51872 ,Marshall Islands,2014 ,8 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Maersk Nile,5466 ,TEU,65152 ,51872 ,Marshall Islands,2014 ,11 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Maersk Tigris,5466 ,TEU,65152 ,51872 ,Marshall Islands,2014 ,12 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,Maersk Lome,5466 ,TEU,65152 ,51872 ,Marshall Islands,2015 ,3 ,HHIC-Phil (Subic SY),Rickmers Group
+Container,KMTC Mumbai,5400 ,TEU,65128 ,51872 ,Panama,2014 ,6 ,HHIC-Phil (Subic SY),KMTC
+Container,Charlotte Schulte,5400 ,TEU,65128 ,51872 ,Singapore,2014 ,1 ,HHIC-Phil (Subic SY),Schulte Group
+Container,Christa Schulte,5400 ,TEU,65128 ,51872 ,Singapore,2014 ,4 ,HHIC-Phil (Subic SY),Schulte Group
+Container,Clemens Schulte,5400 ,TEU,65128 ,51872 ,Singapore,2014 ,4 ,HHIC-Phil (Subic SY),Schulte Group
+Container,YM New Jersey,5500 ,TEU,65123 ,54828 ,Marshall Islands,2006 ,11 ,Koyo Dock K.K.,Diana Shipping
+Container,YM Los Angeles,5500 ,TEU,65123 ,54828 ,Marshall Islands,2006 ,12 ,Koyo Dock K.K.,Diana Shipping
+Container,Carl Schulte,5400 ,TEU,65072 ,51872 ,Singapore,2014 ,4 ,HHIC-Phil (Subic SY),Schulte Group
+Container,KMTC Dubai,5466 ,TEU,65072 ,52254 ,Panama,2015 ,4 ,HHIC-Phil (Subic SY),KMTC
+Container,Monte Tamaro,5550 ,TEU,64730 ,69132 ,Germany,2007 ,11 ,Daewoo (DSME),Hamburg-Sud
+Container,Monte Cervantes,5552 ,TEU,64730 ,68500 ,Madeira,2004 ,7 ,Daewoo (DSME),Hamburg-Sud
+Container,Monte Olivia,5552 ,TEU,64730 ,68500 ,Germany,2004 ,10 ,Daewoo (DSME),Hamburg-Sud
+Container,Monte Pascoal,5552 ,TEU,64730 ,68500 ,Germany,2005 ,1 ,Daewoo (DSME),Hamburg-Sud
+Container,Monte Rosa,5552 ,TEU,64730 ,67330 ,Germany,2005 ,3 ,Daewoo (DSME),Hamburg-Sud
+Container,Monte Sarmiento,5552 ,TEU,64730 ,67330 ,Germany,2005 ,6 ,Daewoo (DSME),Hamburg-Sud
+Container,Monte Verde,5552 ,TEU,64730 ,67330 ,Germany,2005 ,8 ,Daewoo (DSME),Hamburg-Sud
+Container,APL Agate,5020 ,TEU,64145 ,65475 ,United States,1997 ,9 ,Samsung HI,Neptune Orient Lines
+Container,APL Cyprine,5020 ,TEU,64145 ,65475 ,United States,1997 ,12 ,Samsung HI,Neptune Orient Lines
+Container,APL Pearl,5020 ,TEU,64145 ,65475 ,Singapore,1998 ,2 ,Samsung HI,Neptune Orient Lines
+Container,APL Coral,5020 ,TEU,64145 ,65475 ,United States,1998 ,5 ,Samsung HI,Neptune Orient Lines
+Container,ITAL Usodimare,5652 ,TEU,63888 ,68888 ,Italy,2000 ,11 ,MHI Kobe,Evergreen Marine
+Container,Lars Maersk,4258 ,TEU,63500 ,50721 ,Danish Int'l Register,2004 ,10 ,Odense Lindo,A.P. Moller
+Container,Lexa Maersk,4258 ,TEU,63400 ,50721 ,Danish Int'l Register,2001 ,10 ,Odense Lindo,A.P. Moller
+Container,Lica Maersk,4258 ,TEU,63400 ,50721 ,Danish Int'l Register,2001 ,11 ,Odense Lindo,A.P. Moller
+Container,Luna Maersk,4258 ,TEU,63395 ,50721 ,Danish Int'l Register,2002 ,1 ,Odense Lindo,A.P. Moller
+Container,Ever Unity,5652 ,TEU,63388 ,69218 ,Panama,1999 ,8 ,MHI Nagasaki,Evergreen Marine
+Container,Ever Urban,5364 ,TEU,63388 ,69218 ,Panama,2000 ,1 ,MHI Nagasaki,Evergreen Marine
+Container,Ever Uberty,5652 ,TEU,63388 ,69218 ,Singapore,1999 ,1 ,MHI Kobe,Evergreen Marine
+Container,Ever Unific,5652 ,TEU,63388 ,69218 ,Singapore,1999 ,3 ,MHI Kobe,Evergreen Marine
+Container,Ever Uranus,5652 ,TEU,63388 ,69218 ,Panama,1999 ,6 ,MHI Kobe,Evergreen Marine
+Container,Ever Ursula,5652 ,TEU,63388 ,69218 ,Panama,1999 ,10 ,MHI Kobe,Evergreen Marine
+Container,Ever Useful,5652 ,TEU,63388 ,69218 ,Panama,1999 ,12 ,MHI Kobe,Evergreen Marine
+Container,Ever Ultra,5364 ,TEU,63388 ,69218 ,Panama,1996 ,5 ,MHI Kobe,Evergreen Marine
+Container,Ever United,5364 ,TEU,63388 ,69218 ,Singapore,1996 ,9 ,MHI Kobe,Evergreen Marine
+Container,Ever Unison,5364 ,TEU,63388 ,69218 ,Singapore,1996 ,11 ,MHI Kobe,Evergreen Marine
+Container,Ever Unique,5364 ,TEU,63388 ,69218 ,Singapore,1997 ,1 ,MHI Kobe,Evergreen Marine
+Container,Ever Union,5364 ,TEU,63388 ,69218 ,Panama,1997 ,4 ,MHI Kobe,Evergreen Marine
+Container,Ital Unica,5652 ,TEU,63216 ,69246 ,Italy,2001 ,2 ,MHI Kobe,Evergreen Marine
+Container,Ital Universo,5652 ,TEU,63216 ,69246 ,Italy,2001 ,5 ,MHI Kobe,Evergreen Marine
+Container,Ever Ulysses,5652 ,TEU,63216 ,69246 ,Singapore,2000 ,6 ,MHI Kobe,Evergreen Marine
+Container,Ever Unicorn,5652 ,TEU,63216 ,69246 ,Singapore,2000 ,9 ,MHI Kobe,Evergreen Marine
+Container,Ever Utile,5652 ,TEU,63216 ,69246 ,Panama,2000 ,3 ,MHI Kobe,Evergreen Marine
+Container,Laura Maersk,4258 ,TEU,63200 ,50721 ,Danish Int'l Register,2001 ,4 ,Odense Lindo,A.P. Moller
+Container,Leda Maersk,4258 ,TEU,63200 ,50721 ,Danish Int'l Register,2001 ,8 ,Odense Lindo,A.P. Moller
+Container,MSC Messina,4953 ,TEU,63014 ,60117 ,Liberia,1995 ,2 ,MHI Nagasaki,Eastern Pacific Shpg
+Container,Cap Ferrato,4975 ,TEU,63007 ,52464 ,Malta,2012 ,11 ,Hyundai Samho HI,"Oltmann, D."
+Container,Laust Maersk,4258 ,TEU,63000 ,50721 ,Danish Int'l Register,2001 ,6 ,Odense Lindo,A.P. Moller
+Container,Cap Frio,4975 ,TEU,62997 ,52464 ,Malta,2012 ,10 ,Hyundai Samho HI,"Oltmann, D."
+Container,Safmarine Nomazwe,4045 ,TEU,62994 ,50657 ,Hong Kong,2004 ,12 ,Odense Lindo,A.P. Moller
+Container,Safmarine Nokwanda,4045 ,TEU,62994 ,50657 ,Hong Kong,2005 ,1 ,Odense Lindo,A.P. Moller
+Container,Maersk Launceston,4045 ,TEU,62994 ,50736 ,Liberia,2005 ,3 ,Odense Lindo,John T. Essberger
+Container,APL Iolite,4918 ,TEU,62693 ,63900 ,Singapore,1997 ,6 ,MHI Nagasaki,Neptune Orient Lines
+Container,APL Iris,4918 ,TEU,62693 ,63900 ,Singapore,1998 ,2 ,MHI Nagasaki,Neptune Orient Lines
+Container,Hanjin Aqua,4532 ,TEU,62448 ,51500 ,Panama,2013 ,1 ,Hyundai Samho HI,Kmarin
+Container,Hanjin Marine,4532 ,TEU,62448 ,51032 ,Panama,2013 ,5 ,Hyundai Samho HI,Hyundai Mipo
+Container,Hanjin Mar,4532 ,TEU,62448 ,51500 ,Panama,2013 ,6 ,Hyundai Samho HI,Hyundai Mipo
+Container,Seasmile,5067 ,TEU,62340 ,55400 ,Malta,2013 ,8 ,Hyundai Samho HI,Thenamaris
+Container,Seadream,5067 ,TEU,62340 ,55400 ,Malta,2014 ,1 ,Hyundai Samho HI,Thenamaris
+Container,Hyundai Prestige,5023 ,TEU,62335 ,52400 ,Liberia,2013 ,2 ,Hyundai HI (Gunsan),Capital Maritime
+Container,Hyundai Premium,5023 ,TEU,62335 ,52400 ,Liberia,2013 ,3 ,Hyundai HI (Gunsan),Capital Maritime
+Container,Hyundai Paramount,5023 ,TEU,62335 ,52400 ,Liberia,2013 ,3 ,Hyundai HI (Gunsan),Capital Maritime
+Container,Hyundai Privilege,5023 ,TEU,62335 ,52400 ,Liberia,2013 ,5 ,Hyundai HI (Gunsan),Capital Maritime
+Container,Hyundai Platinum,5023 ,TEU,62335 ,52400 ,Liberia,2013 ,6 ,Hyundai HI (Gunsan),Capital Maritime
+Container,Merkur Harbour,4532 ,TEU,61983 ,41331 ,Liberia,2012 ,2 ,Hyundai Samho HI,F. A. Vinnen & Co.
+Container,MSC Eugenia,4469 ,TEU,61776 ,53521 ,Panama,1992 ,1 ,Hyundai HI,MSC
+Container,Maersk Cabo Verde,4496 ,TEU,61643 ,50869 ,Hong Kong,2012 ,3 ,Hyundai Samho HI,A.P. Moller
+Container,Maersk Casablanca,4496 ,TEU,61614 ,50869 ,Hong Kong,2012 ,4 ,Hyundai Samho HI,A.P. Moller
+Container,Maersk Cairo,4496 ,TEU,61614 ,50869 ,Hong Kong,2012 ,5 ,Hyundai Samho HI,A.P. Moller
+Container,Maersk Cubango,4496 ,TEU,61614 ,50869 ,Hong Kong,2012 ,5 ,Hyundai Samho HI,A.P. Moller
+Container,Safmarine Chambal,4496 ,TEU,61614 ,50869 ,Hong Kong,2012 ,3 ,Hyundai HI,A.P. Moller
+Container,Safmarine Chachai,4496 ,TEU,61614 ,50869 ,Hong Kong,2012 ,5 ,Hyundai HI,A.P. Moller
+Container,Maersk Colombo,4496 ,TEU,61614 ,50869 ,Singapore,2012 ,7 ,Hyundai HI,A.P. Moller
+Container,Maersk Copenhagen,4496 ,TEU,61614 ,50869 ,Singapore,2012 ,8 ,Hyundai HI,A.P. Moller
+Container,Maersk Conakry,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,3 ,Hyundai HI,A.P. Moller
+Container,Maersk Cotonou,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,4 ,Hyundai HI,A.P. Moller
+Container,Maersk Calabar,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,4 ,Hyundai HI,A.P. Moller
+Container,Maersk Cape Coast,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,5 ,Hyundai HI,A.P. Moller
+Container,Maersk Cameroun,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,6 ,Hyundai HI,A.P. Moller
+Container,Maersk Chennai,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,7 ,Hyundai HI,A.P. Moller
+Container,Maersk Congo,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,8 ,Hyundai HI,A.P. Moller
+Container,Maersk Cape Town,4496 ,TEU,61614 ,50869 ,Singapore,2011 ,9 ,Hyundai HI,A.P. Moller
+Container,Safmarine Chilka,4496 ,TEU,61614 ,50869 ,Hong Kong,2012 ,2 ,Hyundai HI,A.P. Moller
+Container,Maersk Cadiz,4496 ,TEU,61614 ,50869 ,Singapore,2013 ,1 ,Hyundai HI,A.P. Moller
+Container,Maersk Cardiff,4496 ,TEU,61614 ,50869 ,Singapore,2013 ,2 ,Hyundai HI,A.P. Moller
+Container,Maersk Cuanza,4496 ,TEU,61614 ,50869 ,Singapore,2012 ,6 ,Hyundai Samho HI,A.P. Moller
+Container,Maersk Cunene,4496 ,TEU,61561 ,50869 ,Singapore,2011 ,9 ,Hyundai Samho HI,A.P. Moller
+Container,Maersk Cabinda,4496 ,TEU,61547 ,50869 ,Singapore,2012 ,6 ,Hyundai Samho HI,A.P. Moller
+Container,MSC Shaula,4651 ,TEU,61152 ,51836 ,Panama,1992 ,12 ,Hyundai HI,Eastern Pacific Shpg
+Container,Federal,4411 ,TEU,61152 ,51841 ,Cyprus,1994 ,5 ,Hyundai HI,Danaos Shpg.
+Container,Hanjin Indigo,4662 ,TEU,60153 ,45169 ,Panama,2013 ,4 ,Samsung HI,Hanjin Group
+Container,Hanjin Scarlet,4662 ,TEU,60153 ,45169 ,Panama,2013 ,6 ,Samsung HI,Hanjin Group
+Container,Hanjin White,4662 ,TEU,60153 ,45169 ,Panama,2014 ,7 ,Samsung HI,Hanjin Group
+Container,JPO Atair,5001 ,TEU,60149 ,48438 ,Liberia,2015 ,1 ,Weihai Samjin SY,"Oltmann, Schiff."
+Container,Brotonne Bridge,4520 ,TEU,59678 ,46444 ,Hong Kong,2010 ,10 ,Samsung HI,Seaspan Corporation
+Container,Brevik Bridge,4520 ,TEU,59678 ,46444 ,Hong Kong,2011 ,1 ,Samsung HI,Seaspan Corporation
+Container,Bilbao Bridge,4520 ,TEU,59678 ,46444 ,Hong Kong,2011 ,1 ,Samsung HI,Seaspan Corporation
+Container,Berlin Bridge,4520 ,TEU,59678 ,46444 ,Hong Kong,2011 ,5 ,Samsung HI,Seaspan Corporation
+Container,Budapest Bridge,4520 ,TEU,59678 ,46444 ,Hong Kong,2011 ,8 ,Samsung HI,Seaspan Corporation
+Container,Hammonia Sapphire,4896 ,TEU,59366 ,47873 ,Liberia,2014 ,1 ,Zhejiang Ouhua SB,Peter Dohle Schiff.
+Container,RHL Conscientia,4620 ,TEU,58197 ,48799 ,Malta,2012 ,5 ,Shanghai Shipyard,Hamburger Lloyd
+Container,RHL Concordia,4620 ,TEU,58189 ,48799 ,Liberia,2012 ,8 ,Shanghai Shipyard,Hamburger Lloyd
+Container,Jogela,4957 ,TEU,58170 ,48338 ,Madeira,2014 ,3 ,Jiangsu New YZJ,Peter Dohle Schiff.
+Container,Hammonia Istria,4957 ,TEU,58170 ,48338 ,Liberia,2013 ,6 ,Jiangsu New YZJ,Peter Dohle Schiff.
+Container,Hammonia Toscana,4957 ,TEU,58170 ,48338 ,Liberia,2013 ,7 ,Jiangsu New YZJ,Peter Dohle Schiff.
+Container,HS Marco Polo,4771 ,TEU,58087 ,48338 ,Malta,2014 ,5 ,Jiangsu New YZJ,Hansa Treuhand
+Container,HS Everest,4771 ,TEU,58059 ,48338 ,Malta,2014 ,5 ,Jiangsu New YZJ,Hansa Treuhand
+Container,Jadrana,4957 ,TEU,58037 ,48338 ,Madeira,2014 ,3 ,Jiangsu New YZJ,Peter Dohle Schiff.
+Container,HS Baffin,4771 ,TEU,58027 ,48338 ,Malta,2013 ,10 ,Jiangsu New YZJ,Hansa Treuhand
+Container,RHL Constantia,4620 ,TEU,58027 ,48799 ,Malta,2013 ,5 ,Jiangnan Changxing,Hamburger Lloyd
+Container,RHL Calliditas,4620 ,TEU,58014 ,48799 ,Liberia,2013 ,9 ,Jiangnan Changxing,Hamburger Lloyd
+Container,Vicente Pinzon,4800 ,TEU,57882 ,47799 ,Brazil,2014 ,7 ,Shanghai Shipyard,Hamburg-Sud
+Container,Wan Hai 511,4532 ,TEU,57830 ,47309 ,Singapore,2012 ,5 ,CSBC (Keelung),Wan Hai Lines
+Container,Wan Hai 512,4532 ,TEU,57830 ,47309 ,Singapore,2012 ,8 ,CSBC (Keelung),Wan Hai Lines
+Container,Wan Hai 513,4532 ,TEU,57830 ,47309 ,Singapore,2012 ,11 ,CSBC (Keelung),Wan Hai Lines
+Container,Wan Hai 515,4532 ,TEU,57830 ,47309 ,Singapore,2013 ,3 ,CSBC (Keelung),Wan Hai Lines
+Container,Wan Hai 516,4532 ,TEU,57830 ,47309 ,Singapore,2013 ,4 ,CSBC (Keelung),Wan Hai Lines
+Container,Wan Hai 517,4532 ,TEU,57830 ,47250 ,Singapore,2013 ,6 ,CSBC (Keelung),Wan Hai Lines
+Container,Bartolomeu Dias,4800 ,TEU,57818 ,47799 ,Brazil,2014 ,3 ,Shanghai Shipyard,Hamburg-Sud
+Container,HS Shackleton,4771 ,TEU,57800 ,48338 ,Malta,2013 ,9 ,Jiangsu New YZJ,Hansa Treuhand
+Container,Kota Legit,4800 ,TEU,57778 ,47799 ,Hong Kong,2014 ,10 ,Shanghai Shipyard,Pacific Intl Lines
+Container,Kota Lekas,4800 ,TEU,57712 ,47799 ,Hong Kong,2014 ,9 ,Shanghai Shipyard,Pacific Intl Lines
+Container,Tommi Ritscher,4957 ,TEU,57500 ,48338 ,Madeira,2014 ,9 ,Jiangsu New YZJ,Gerd Ritscher K.G.
+Container,YM Evolution,4662 ,TEU,57320 ,47952 ,Taiwan,2014 ,4 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Essence,4662 ,TEU,57320 ,47300 ,Taiwan,2014 ,7 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Enlightenment,4662 ,TEU,57320 ,47952 ,Liberia,2015 ,1 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Excellence,4662 ,TEU,57320 ,47952 ,Liberia,2015 ,3 ,CSBC (Kaohsiung),Yang Ming
+Container,YM Express,4662 ,TEU,57320 ,47952 ,Liberia,2015 ,5 ,CSBC (Kaohsiung),Yang Ming
+Container,Hammonia America,4896 ,TEU,56620 ,47873 ,Liberia,2014 ,5 ,Zhejiang Ouhua SB,Peter Dohle Schiff.
+Container,Wieland,4957 ,TEU,56054 ,48385 ,Madeira,2014 ,4 ,CSC Jinling Shipyard,Dietrich Tamke K.G.
+Container,Hammonia Virginia,4896 ,TEU,55944 ,47911 ,Liberia,2014 ,10 ,Zhejiang Ouhua SB,Peter Dohle Schiff.
+Container,Seamax Stamford,4896 ,TEU,55936 ,47911 ,Marshall Islands,2015 ,1 ,Zhejiang Ouhua SB,MC Seamax Shipping
+Container,Sima Genesis,4350 ,TEU,53500 ,44887 ,Singapore,2015 ,6 ,Taizhou Catic SB,Simatech
+Container,Brussels Bridge,4432 ,TEU,52452 ,44234 ,Panama,2011 ,7 ,Hyundai HI,Osaka Asahi Kaiun
+Container,OOCL Zhoushan,4583 ,TEU,52214 ,41479 ,Hong Kong,2006 ,9 ,Hudong Zhonghua,Orient Overseas Intl
+Container,NYK Fuji,4538 ,TEU,52190 ,44925 ,Singapore,2011 ,5 ,Hyundai HI,Nippon Yusen Kaisha
+Container,NYK Futago,4538 ,TEU,52190 ,44925 ,Singapore,2011 ,6 ,Hyundai HI,Nippon Yusen Kaisha
+Container,NYK Furano,4538 ,TEU,52190 ,44925 ,Singapore,2012 ,4 ,Hyundai HI,Nippon Yusen Kaisha
+Container,NYK Fushimi,4538 ,TEU,52190 ,44925 ,Singapore,2012 ,3 ,Hyundai HI,Nippon Yusen Kaisha
+Container,Sebastiao Caboto,3765 ,TEU,52065 ,42564 ,Brazil,2013 ,1 ,Shanghai Shipyard,Hamburg-Sud
+Container,Pedro Alvares Cabral,3765 ,TEU,52065 ,42564 ,Brazil,2013 ,5 ,Shanghai Shipyard,Hamburg-Sud
+Container,Fernao de Magalhaes,3765 ,TEU,52065 ,42564 ,Brazil,2013 ,7 ,Shanghai Shipyard,Hamburg-Sud
+Container,Americo Vespucio,3765 ,TEU,52065 ,42564 ,Brazil,2013 ,8 ,Shanghai Shipyard,Hamburg-Sud
+Container,Kota Pelangi,3765 ,TEU,52065 ,42564 ,Malta,2013 ,8 ,Shanghai Shipyard,F. A. Vinnen & Co.
+Container,Cap Coral,3765 ,TEU,52065 ,42564 ,Malta,2013 ,11 ,Shanghai Shipyard,F. A. Vinnen & Co.
+Container,Bai Chay Bridge,4432 ,TEU,52055 ,44459 ,Panama,2011 ,8 ,Hyundai HI,K-Line
+Container,Brooklyn Bridge,4432 ,TEU,52055 ,44459 ,Panama,2010 ,5 ,Hyundai HI,K-Line
+Container,Bay Bridge,4432 ,TEU,52055 ,44459 ,Panama,2010 ,6 ,Hyundai HI,Fukujin Shipping
+Container,Bangkok Bridge,4432 ,TEU,52055 ,44234 ,Panama,2010 ,8 ,Hyundai HI,Fukujin Shipping
+Container,Baltimore Bridge,4432 ,TEU,52055 ,44459 ,Panama,2010 ,9 ,Hyundai HI,K-Line
+Container,Bear Mountain Bridge,4432 ,TEU,52055 ,44459 ,Panama,2011 ,4 ,Hyundai HI,Doun Kisen K.K.
+Container,MOL Naja,3832 ,TEU,52038 ,41286 ,Hong Kong,2014 ,8 ,HHIC-Phil (Subic SY),CMB
+Container,MOL Naima,3832 ,TEU,52034 ,41286 ,Hong Kong,2014 ,7 ,HHIC-Phil (Subic SY),CMB
+Container,Cap Capricorn,3884 ,TEU,51931 ,42814 ,Liberia,2013 ,10 ,Sinopacific Zhejiang,XT Group
+Container,Cap Corrientes,3820 ,TEU,51759 ,42690 ,Liberia,2013 ,4 ,Taizhou Catic SB,Carsten Rehder
+Container,Cap Cortes,3820 ,TEU,51733 ,42690 ,Liberia,2013 ,5 ,Taizhou Catic SB,Carsten Rehder
+Container,CMA CGM Africa One,3650 ,TEU,51634 ,40827 ,Bahamas,2010 ,8 ,HHIC-Phil (Subic SY),Chartworld Shpg.
+Container,CMA CGM Africa Four,3650 ,TEU,51619 ,40827 ,Bahamas,2010 ,10 ,HHIC-Phil (Subic SY),Chartworld Shpg.
+Container,CMA CGM Africa Two,3650 ,TEU,51608 ,40827 ,Bahamas,2010 ,8 ,HHIC-Phil (Subic SY),Chartworld Shpg.
+Container,CMA CGM Africa Three,3650 ,TEU,51604 ,40827 ,Bahamas,2010 ,9 ,HHIC-Phil (Subic SY),Chartworld Shpg.
+Container,Cap Campbell,3884 ,TEU,51599 ,43015 ,Liberia,2013 ,7 ,Sinopacific Zhejiang,XT Group
+Container,Kota Sabas,3889 ,TEU,51567 ,41567 ,Singapore,2014 ,6 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,MOL Nala,3832 ,TEU,51500 ,40200 ,Hong Kong,2014 ,8 ,HHIC-Phil (Subic SY),CMB
+Container,MOL Nabila,3832 ,TEU,51500 ,40200 ,Hong Kong,2014 ,7 ,HHIC-Phil (Subic SY),CMB
+Container,Kota Sempena,3889 ,TEU,51500 ,41567 ,Singapore,2015 ,7 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Segar,3889 ,TEU,50800 ,41567 ,Singapore,2014 ,10 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Sejarah,3889 ,TEU,50800 ,41567 ,Singapore,2015 ,1 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Sejati,3889 ,TEU,50800 ,41567 ,Singapore,2015 ,2 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Selamat,3889 ,TEU,50800 ,41567 ,Singapore,2015 ,5 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Sahabat,3889 ,TEU,50800 ,41567 ,Singapore,2014 ,8 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Salam,3889 ,TEU,50800 ,41567 ,Singapore,2014 ,8 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Kota Satria,3889 ,TEU,50800 ,41567 ,Singapore,2014 ,11 ,Dalian Shipbuilding,Pacific Intl Lines
+Container,Hanjin California,3674 ,TEU,48997 ,40855 ,Liberia,2013 ,9 ,Sungdong SB,XT Group
+Container,Hanjin New Jersey,3674 ,TEU,48997 ,36600 ,Liberia,2013 ,10 ,Sungdong SB,Eastern Pacific Shpg
+Container,Hanjin Florida,3674 ,TEU,48997 ,40855 ,Liberia,2013 ,12 ,Sungdong SB,XT Group
+Container,Hanjin Louisiana,3674 ,TEU,48997 ,40855 ,Liberia,2013 ,12 ,Sungdong SB,Zodiac Maritime Agy
+Container,Niledutch Rotterdam,3508 ,TEU,48039 ,39106 ,Netherlands,2015 ,3 ,Shanghai Shipyard,Nile Dutch Africa
+Container,Niledutch Antwerpen,3508 ,TEU,47200 ,39106 ,Netherlands,2015 ,2 ,Shanghai Shipyard,Nile Dutch Africa
+Container,Niledutch Breda,3508 ,TEU,47200 ,39106 ,Netherlands,2014 ,6 ,Shanghai Shipyard,Nile Dutch Africa
+Container,Hanjin Turkey,3566 ,TEU,45349 ,37199 ,Singapore,2013 ,1 ,Hyundai Samho HI,Hyundai Mipo
+Container,Hanjin Mexico,3566 ,TEU,45349 ,37199 ,Singapore,2013 ,5 ,Hyundai Samho HI,Hyundai Mipo
+Container,Hanjin Indonesia,3566 ,TEU,45349 ,37199 ,Singapore,2013 ,3 ,Hyundai Samho HI,Hyundai Mipo
+Container,Hanjin Argentina,3566 ,TEU,45349 ,37199 ,Singapore,2013 ,4 ,Hyundai Samho HI,Hyundai Mipo
+Container,Niledutch Dordrecht,3508 ,TEU,40450 ,39106 ,Netherlands,2015 ,1 ,Shanghai Shipyard,Nile Dutch Africa
