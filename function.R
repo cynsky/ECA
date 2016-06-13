@@ -37,7 +37,7 @@ setLines<-function(points){
 #lines:data.table
 #speed unit:knot(nm/h)
 
-addLineSpeed<-function(lines,time_threshold,dist_threshold){ 
+addLineSpeed<-function(lines,time_threshold=600,dist_threshold=2){ 
   
   lines=lines[,timespan:=abs(time2-time1)*1.0]
   lines=lines[,distance:=distance(lon1,lat1,lon2,lat2)]
@@ -48,7 +48,7 @@ addLineSpeed<-function(lines,time_threshold,dist_threshold){
   return(lines)
   
 }
-#distance of two points
+#distance of two points,单位米
 distance<-function(lon1,lat1,lon2,lat2){
   
   radlat1=rad(lat1);
@@ -70,6 +70,5 @@ rad<-function(d){
   return (d*pi/180);
   
 }
-
 
 
