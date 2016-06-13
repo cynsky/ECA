@@ -33,7 +33,11 @@ p01=setPoints(p0,1000)
 p.grids=p01[,list(.N,lon=mean(lon),lat=mean(lat)),list(gid,g.lon,g.lat)];dim(p.grids)
 plot(p.grids$lon,p.grids$lat)
 
+p=getMap(p.grids,6)
+p=p+geom_point(data=p.grids,aes(x=lon,y=lat))
+p
 
+write.csv(p.grids,file = 'zerogrids.csv')
 
 # 数据处理：segment trajectory，在后边添加tripid,其中tripid==0表示为分割segment
 
