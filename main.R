@@ -22,7 +22,6 @@ setkey(dt,mmsi,time)
 polygon.points=fread(input ='D://share/Git/Rprojects/ECA/polygon' )
 idx.array=point.in.polygon(dt$lon,dt$lat,polygon.points$x,polygon.points$y)
 points=cbind(dt,idx.array)[idx.array>0,]
-
 points=points[sog<260,]#删掉航速大于26节的轨迹点
 
 #聚类发现集装箱码头，并画出泊位位置，如有岸电等情况
