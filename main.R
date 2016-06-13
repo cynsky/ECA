@@ -4,6 +4,7 @@ library('dplyr')
 library('sp')
 library('dbscan')
 library('ggplot2')
+library('ggmap')
 # read ships
 shipfile='D://share/ships/ships.txt'
 ships=getships(shipfile);dim(ships);head(ships);setkey(ships,mmsi)

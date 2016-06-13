@@ -7,3 +7,4 @@ plotSegs <- function(l) {
     plot(trip$lon1,trip$lat1)
   }
 }
+
