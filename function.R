@@ -48,7 +48,7 @@ addLineSpeed<-function(lines,time_threshold=600,dist_threshold=2){
   return(lines)
   
 }
-#distance of two points
+#distance of two points,单位米
 distance<-function(lon1,lat1,lon2,lat2){
   
   radlat1=rad(lat1);
@@ -70,3 +70,54 @@ rad<-function(d){
   return (d*pi/180);
   
 }
+
+#time_threshold 位两相邻轨迹点之间的时间间隔，单位为天，默认值为3天 72 小时。
+#返回值为加入了tripid的lines
+segTra<-function(l,time_threshold=3){
+  setkey(l,lid)
+  bl=l[timespan/3600/24>=time_threshold,list(lid,time1,time2,timespan)]
+  lids=bl$lid
+  if(nrow(bl)>1){
+     l[,tripid:=0]#分割的line的tripid=0
+  for(i in (1:(nrow(bl)-1))){
+    
+    l[(lid>lids[i])&(lid<lids[i+1]),tripid:=(i+1)]
+    
+  }
+  #第一个和最后一个tripid
+  l[(lid<lids[1]),tripid:=1]
+  l[(lid>lids[nrow(bl)]),tripid:=(nrow(bl)+1)]
+    
+  }else if(nrow(bl)==1){
+    
+    l[,tripid:=0]#分割的line的tripid=0
+    #第一个和最后一个tripid
+    l[(lid<lids[1]),tripid:=1]
+    l[(lid>lids[nrow(bl)]),tripid:=(nrow(bl)+1)]
+    
+    
+  }else{
+    
+    l[,tripid:=1]
+  }
+ 
+  
+  return(l)
+  
+}
+
+getships<-function(shipfile){
+  
+  #ships=fread('D:/Rprojects/ships/ships.txt',sep=',') # build year should be include
+  ships=fread(shipfile,sep=',')
+  ships=ships[!is.na(mmsi)]
+  # ships$mmsi<-as.character(ships$mmsi)
+  setkey(ships,mmsi)
+  return (ships)
+  
+}
+
+#识别缺失轨迹航段。条件1：
+
+
+
