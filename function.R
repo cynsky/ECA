@@ -23,12 +23,11 @@ setPoints <- function(points,scale = 10) {
 setLines <- function(points) {
   n = nrow(points)
   setkey(points,time)
-  dt1 = points[1:(n - 1),list(lon,lat,time,sog,pid,gid,g.lon,g.lat)]
+  dt1 = points[1:(n - 1),list(mmsi,lon,lat,time,sog,pid,gid,g.lon,g.lat)]
   dt2 = points[2:n,list(lon,lat,time,sog,pid,gid,g.lon,g.lat)]
   lines = cbind(dt1,dt2)
   setnames(
-    lines,c(
-      'lon1','lat1','time1','sog1','pid1','gid1','g.lon1','g.lat1','lon2','lat2','time2','sog2','pid2','gid2','g.lon2','g.lat2'
+    lines,c('mmsi','lon1','lat1','time1','sog1','pid1','gid1','g.lon1','g.lat1','lon2','lat2','time2','sog2','pid2','gid2','g.lon2','g.lat2'
     )
   )
   lines[,lid:= seq(1,n - 1)]
@@ -222,12 +221,160 @@ gridLines<-function(lines,scale=10){
   
 }
 
-traEmission<-function(ship,lines,ef){
+#emission of a ship
+
+shipEmission<-function(ship,lines,mBaseEF,auxEF,boiEF){
+  auxPowerdt = fread('data/auxpw.csv',sep=',',header = TRUE)
+  boiPowerdt = fread('data/boilerpw.csv',sep=',',header = TRUE)
+  #low load adjustment multipler
+  llaFactordt = fread('data/LowLoadAdjustmentFactors.csv',sep=',',header = TRUE)
+  sSpeed=ship$speed*10#service speed
+  pw=ship$powerkw
+  MCR=round(pw/0.9)
+  DWT=ship$dwt
+  #计算船舶在每种航速下的能耗
+  em=lines[,list(.N,duration=sum(timespan)),list(speed=round(avgspeed))]
+  em[,load.main:=round((speed*0.94/sSpeed)^3,2)]#load.main=main engine load factor
+  # plot(em$load.main)
+  #operation modes:1 at berth, 2 anchored, 3 manoeuvering, 4 slow-steaming, 5 normal cruising
+  #imo 2014,p122
+  em[,mode:=0]
+  em[speed<10,mode:=1]
+  em[speed>=1&speed<=30,mode:=2]
+  em[speed>30&load.main<0.2,mode:=3]
+  em[load.main>=0.2&load.main<=0.65,mode:=4]
+  em[load.main>0.65,mode:=5]
+  em[mode==3&load.main<0.02,load.main:=0.02]
+  #e[mode==3&load.main*100<19.5&load.main*100>1.5,load.main:=0.2]
   
+  em[,loadId:=100*load.main] # to join with low load factor table
+  em[load.main>0.195|load.main<0.015,loadId:=20]#only load with in (0.02,0.2) need adject
   
+  #----------------calculate emission factors------------------
   
+  llaFactordt[,loadId:=Load]
+  setkey(llaFactordt,loadId)
+  setkey(em,loadId)
+  em=data.table(left_join(em,llaFactordt[,list(loadId,CO2,PM2.5,SOx,NOx)],by='loadId'))
+  setnames(em,c('loadId','speedid', 'segments','duration','load.main','mode','llaCO2','llaPM2.5','llaSOx','llaNOx'))
   
+  #main engine emission:kw*n*g/kwh*n*s/3600/1000/1000: tons
+  em[,meCO2:=MCR*load.main*mBaseEF$CO2*llaCO2*duration/3600/1000/1000]
+  em[,mePM2.5:=MCR*load.main*mBaseEF$PM2.5*llaPM2.5*duration/3600/1000/1000]
+  em[,meSOx:=MCR*load.main*mBaseEF$SOx*llaSOx*duration/3600/1000/1000]
+  em[,meNOx:=MCR*load.main*mBaseEF$NOx*llaNOx*duration/3600/1000/1000]
   
+  #-----IMO 2014 中辅机功率没有分SRZ和SEA两种模式，只是提供了一种在海模式的功率-----
+  #-----如果要分这两种模式，可以参考port 2009中的处理方式---------------------------
+  #------------aux engine-----------
+  
+  auxPower=auxPowerdt[ShipClass==ship$type_en&CapacityFrom<DWT&CapacityTo>DWT]
+  
+  em[,aePM2.5:=0]
+  em[,aeNOx:=0]
+  em[,aeSOx:=0]
+  em[,aeCO2:=0]
+  
+  em[mode==1,aePM2.5:=auxPower$Berth*auxEF$PM2.5*duration/3600/1000/1000]
+  em[mode==1,aeNOx:=auxPower$Berth*auxEF$NOx*duration/3600/1000/1000]
+  em[mode==1,aeSOx:=auxPower$Berth*auxEF$SOx*duration/3600/1000/1000]
+  em[mode==1,aeCO2:=auxPower$Berth*auxEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==2,aePM2.5:=auxPower$Anchorage*auxEF$PM2.5*duration/3600/1000/1000]
+  em[mode==2,aeNOx:=auxPower$Anchorage*auxEF$NOx*duration/3600/1000/1000]
+  em[mode==2,aeSOx:=auxPower$Anchorage*auxEF$SOx*duration/3600/1000/1000]
+  em[mode==2,aeCO2:=auxPower$Anchorage*auxEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==3,aePM2.5:=auxPower$Maneuvering*auxEF$PM2.5*duration/3600/1000/1000]
+  em[mode==3,aeNOx:=auxPower$Maneuvering*auxEF$NOx*duration/3600/1000/1000]
+  em[mode==3,aeSOx:=auxPower$Maneuvering*auxEF$SOx*duration/3600/1000/1000]
+  em[mode==3,aeCO2:=auxPower$Maneuvering*auxEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==5,aePM2.5:=auxPower$Sea*auxEF$PM2.5*duration/3600/1000/1000]
+  em[mode==5,aeNOx:=auxPower$Sea*auxEF$NOx*duration/3600/1000/1000]
+  em[mode==5,aeSOx:=auxPower$Sea*auxEF$SOx*duration/3600/1000/1000]
+  em[mode==5,aeCO2:=auxPower$Sea*auxEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==4,aePM2.5:=auxPower$Sea*auxEF$PM2.5*duration/3600/1000/1000]
+  em[mode==4,aeNOx:=auxPower$Sea*auxEF$NOx*duration/3600/1000/1000]
+  em[mode==4,aeSOx:=auxPower$Sea*auxEF$SOx*duration/3600/1000/1000]
+  em[mode==4,aeCO2:=auxPower$Sea*auxEF$CO2*duration/3600/1000/1000]
+  
+  #------------boiler engine-----------
+  
+  boiPower=boiPowerdt[ShipClass==ship$type_en&CapacityFrom<DWT&CapacityTo>DWT]
+  
+  em[,boPM2.5:=0]
+  em[,boNOx:=0]
+  em[,boSOx:=0]
+  em[,boCO2:=0]
+  
+  em[mode==1,boPM2.5:=boiPower$Berth*boiEF$PM2.5*duration/3600/1000/1000]
+  em[mode==1,boNOx:=boiPower$Berth*boiEF$NOx*duration/3600/1000/1000]
+  em[mode==1,boSOx:=boiPower$Berth*boiEF$SOx*duration/3600/1000/1000]
+  em[mode==1,boCO2:=boiPower$Berth*boiEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==2,boPM2.5:=boiPower$Anchorage*boiEF$PM2.5*duration/3600/1000/1000]
+  em[mode==2,boNOx:=boiPower$Anchorage*boiEF$NOx*duration/3600/1000/1000]
+  em[mode==2,boSOx:=boiPower$Anchorage*boiEF$SOx*duration/3600/1000/1000]
+  em[mode==2,boCO2:=boiPower$Anchorage*boiEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==3,boPM2.5:=boiPower$Maneuvering*boiEF$PM2.5*duration/3600/1000/1000]
+  em[mode==3,boNOx:=boiPower$Maneuvering*boiEF$NOx*duration/3600/1000/1000]
+  em[mode==3,boSOx:=boiPower$Maneuvering*boiEF$SOx*duration/3600/1000/1000]
+  em[mode==3,boCO2:=boiPower$Maneuvering*boiEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==5,boPM2.5:=boiPower$Sea*boiEF$PM2.5*duration/3600/1000/1000]
+  em[mode==5,boNOx:=boiPower$Sea*boiEF$NOx*duration/3600/1000/1000]
+  em[mode==5,boSOx:=boiPower$Sea*boiEF$SOx*duration/3600/1000/1000]
+  em[mode==5,boCO2:=boiPower$Sea*boiEF$CO2*duration/3600/1000/1000]
+  
+  em[mode==4,boPM2.5:=boiPower$Sea*boiEF$PM2.5*duration/3600/1000/1000]
+  em[mode==4,boNOx:=boiPower$Sea*boiEF$NOx*duration/3600/1000/1000]
+  em[mode==4,boSOx:=boiPower$Sea*boiEF$SOx*duration/3600/1000/1000]
+  em[mode==4,boCO2:=boiPower$Sea*boiEF$CO2*duration/3600/1000/1000]
+  em=em[,mmsi:=ship$mmsi]
+  setkey(em,speedid)
+  return(em)
   
 }
+
+shipProxy<-function(ship,points){
+  
+  sSpeed=ship$speed*10#service speed
+  pw=ship$powerkw
+  MCR=round(pw/0.9)
+  dt2=points#points为已经网格化的轨迹点
+  dt2[,mp:=0]
+  dt2[,ap:=0]
+  dt2[,bp:=0]
+  dt2[,load.main:=round((sog*0.94/sSpeed)^3,2)]
+  dt2[,mp:=round((sog*0.94/sSpeed)^3*MCR)]
+  #set ship status: 1 for berth,2for anchor,3for maneuvering,4for lowCruise,5for highCruise
+  dt2[,mode:=0]
+  dt2[sog<10,mode:=1]
+  dt2[sog>=10&sog<=30,mode:=2]
+  dt2[sog>30&load.main<0.2,mode:=3]
+  dt2[load.main>=0.2&load.main<=0.65,mode:=4]
+  dt2[load.main>0.65,mode:=5]
+  
+  dt2[mode==1,ap:=auxPower$Berth]
+  dt2[mode==2,ap:=auxPower$Anchorage]
+  dt2[mode==3,ap:=auxPower$Maneuvering ]
+  dt2[mode==4,ap:=auxPower$Sea]
+  dt2[mode==5,ap:=auxPower$Sea]
+  
+  dt2[mode==1,bp:=boiPower$Berth]
+  dt2[mode==2,bp:=boiPower$Anchorage]
+  dt2[mode==3,bp:=boiPower$Maneuvering ]
+  dt2[mode==4,bp:=boiPower$Sea]
+  dt2[mode==5,bp:=boiPower$Sea]
+  
+  dt2[mode==3&load.main<0.02,load.main:=0.02]
+  dt2[,tp:=(mp+ap+bp)]
+  proxy=dt2[,list(idx=sum(tp)/sum(dt2$tp)),list(gid,g.lon,g.lat)]
+  return(proxy)
+ 
+}
+
 

@@ -174,37 +174,3 @@ p=p+labs(x="经度",y="纬度")+
   theme(legend.position=c(0.8,0.2))
 p
 
-
-#----另一种计算方式网格分配的方式：利用点的位置以及功率等-----
-#----每个点的主辅机功率，主机功率为3次方，辅机和锅炉功率可以航行模式查表确定------
-dt2=p
-dt2[,mp:=0]
-dt2[,ap:=0]
-dt2[,bp:=0]
-dt2[,mp:=round((sog*0.94/sSpeed)^3*MCR)]
-#set ship status: 1 for berth,2for anchor,3for maneuvering,4for lowCruise,5for highCruise
-dt2[,model:=0]
-dt2[sog<10,model:=1]
-dt2[sog>=10&sog<=30,model:=2]
-dt2[sog>30&load.main<0.2,model:=3]
-dt2[load.main>=0.2&load.main<=0.65,model:=4]
-dt2[load.main>0.65,model:=5]
-
-dt2[model==1,ap:=auxPower$Berth]
-dt2[model==2,ap:=auxPower$Anchorage]
-dt2[model==3,ap:=auxPower$Maneuvering ]
-dt2[model==4,ap:=auxPower$Sea]
-dt2[model==5,ap:=auxPower$Sea]
-
-dt2[model==1,bp:=boiPower$Berth]
-dt2[model==2,bp:=boiPower$Anchorage]
-dt2[model==3,bp:=boiPower$Maneuvering ]
-dt2[model==4,bp:=boiPower$Sea]
-dt2[model==5,bp:=boiPower$Sea]
-
-dt2[,tp:=(mp+ap+bp)]
-proxy=dt2[,list(idx=sum(tp)/sum(dt2$tp)),list(gid,g.lon,g.lat)]
-#每个网格乘以总排放
-
-
-
