@@ -5,6 +5,7 @@ library('sp')
 library('dbscan')
 library('ggplot2')
 library('ggmap')
+library('ggthemes')
 # read ships
 shipfile='D://share/ships/ships.csv'
 ships=getships(shipfile);dim(ships);head(ships);setkey(ships,mmsi)
@@ -24,9 +25,9 @@ polygon.points=fread(input ='D://share/Git/Rprojects/ECA/polygon' )
 idx.array=point.in.polygon(dt$lon,dt$lat,polygon.points$x,polygon.points$y)
 points=cbind(dt,idx.array)[idx.array>0,]
 points=points[sog<260&sog>=0,]#删掉航速大于26节的轨迹点
-gridPoints=setPoints(points,100)
+scale=25
+gridPoints=setPoints(points,scale)
 # 数据处理：segment trajectory，在后边添加tripid,其中tripid==0表示为分割segment
-scale=100
 
 mmsis=gridPoints[,.N,mmsi][N>100,]
 n=nrow(mmsis)
@@ -83,6 +84,7 @@ for(i in (1:n)){
 }
 
 ge=data.table(mmsi=0,gid=0,g.lon=0,g.lat=0,idx=0,CO2=0,PM2.5=0,SOx=0,NOx=0)[mmsi<0,]
+
 for(i in (1:n)){
   if(i%%100==0){
     print(i)
@@ -101,10 +103,7 @@ for(i in (1:n)){
 
 ge.total=ge[,list(CO2=sum(CO2),PM2.5=sum(PM2.5),SOx=sum(SOx),NOx=sum(NOx)),list(gid,g.lon,g.lat)]
 
- 
-
-
-
+plotGrid(e.grid)
 
 # #--------计算排放:利用每个航速所用的时间来计算，而不是针对每个航段 --------
 # shipmmsi=mmsis[1]
@@ -264,7 +263,7 @@ p
 
 write.csv(p.grids,file = 'zerogrids.csv')
 
-
+write.csv(ge.total,file = 'ge.total.csv')
 #缺失轨迹
 missLine=l[,list(lid,tripid,sog1,sog2,avgspeed1,avgspeed2,avgspeed,timespan,distance)][distance>=2*1852&tripid>0]
 dim(missLine)
