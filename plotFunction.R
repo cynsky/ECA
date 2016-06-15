@@ -8,20 +8,32 @@ plotSegs <- function(l) {
   }
 }
 
-g=fread('zerogrids.csv')
-p=getMap(g,7)
-p=p+geom_point(data = g,aes(x=lon,y=lat))
-p
-
-filenames=list.files('data/containerFromClarkson/')
-containers=data.table(Type='e',Name='',Size=0,Unit='',Dwt=0,GT=0,Flag='',Built=0,Month=0,Builder='', OwnerGroup='')[Size<0,]
-
-for (filename in filenames){
+plotZero<-function(){
   
-  dt=read.csv(paste('data/containerFromClarkson/',filename,sep = ''))
-  containers=rbind(containers,dt)
-  
+  g=fread('zerogrids.csv')
+  p=getMap(g,7)
+  p=p+geom_point(data = g,aes(x=lon,y=lat))
+  p
   
 }
-dim(containers);
-containers[Size>14000&Size<16500,list(Size,Dwt,GT)]
+
+
+readClarkson <- function() {
+  
+  filenames = list.files('data/containerFromClarkson/')
+  containers = data.table(
+    Type = 'e',Name = '',Size = 0,Unit = '',Dwt = 0,GT = 0,Flag = '',Built =
+      0,Month = 0,Builder = '', OwnerGroup = ''
+  )[Size < 0,]
+  
+  for (filename in filenames) {
+    dt = read.csv(paste('data/containerFromClarkson/',filename,sep = ''))
+    containers = rbind(containers,dt)
+    
+    
+  }
+  
+  return(containers)
+  
+}
+

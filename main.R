@@ -68,8 +68,6 @@ for(i in (1:n)){
  
 }
   
-
-
 #其中的idx是表示该网格占对应船舶的能耗的比例
 sproxy=data.table(mmsi=0,gid=0,g.lon=0,g.lat=0,idx=0)[mmsi<0]
 for(i in (1:n)){
@@ -83,7 +81,6 @@ for(i in (1:n)){
   proxy=proxy[,mmsi:=shipmmsi]
   sproxy=rbind(sproxy,proxy)
 }
-
 
 ge=data.table(mmsi=0,gid=0,g.lon=0,g.lat=0,idx=0,CO2=0,PM2.5=0,SOx=0,NOx=0)[mmsi<0,]
 for(i in (1:n)){
