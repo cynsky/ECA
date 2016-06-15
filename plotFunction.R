@@ -23,7 +23,7 @@ plotGrid<-function(egrid){
 #   centerY=0.5*(max(temp3$lat)+min(temp3$lat))
   #p<-ggmap(get_map(location=c(centerX,centerY),zoom=6,source='google',maptype = 'roadmap'))
   p=ggplot()
-  p=p+geom_rect(data=egrid,aes(xmin=g.lon,xmax=g.lon+1/scale,ymin=g.lat,ymax=g.lat+1/scale,fill=log(CO2)))
+  p=p+geom_rect(data=egrid,aes(xmin=g.lon,xmax=g.lon+1/scale,ymin=g.lat,ymax=g.lat+1/scale,fill=log2(CO2)))
   p=p+scale_fill_gradient('主机能 \n 耗(吨）',low='green',high='red')
   p=p+labs(x="经度",y="纬度")+
     theme(legend.position=c(0.8,0.1))
