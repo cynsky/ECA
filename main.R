@@ -29,8 +29,9 @@ gridPoints=setPoints(points,100)
 scale=100
 
 mmsis=gridPoints[,.N,mmsi][N>100,]
+n=nrow(mmsis)
 l=data.table(lid=0,mmsi=0,pid1=0,pid2=0,timespan=0,distance=0,avgspeed1=0,avgspeed2=0,avgspeed=0,tripid=0)[mmsi<0]
-for(i in (1:2)){
+for(i in (1:n)){
   if(i%%100==0){
     print(i)
   }
@@ -49,7 +50,10 @@ setkey(l,mmsi,lid)
 #----排放及其空间分布计算
 em1=data.table(mmsi=0,speedid=0,segments=0,duration=0,mode=0,meCO2=0,mePM2.5=0,meSOx=0,meNOx=0,
              aePM2.5=0,aeNOx=0,aeSOx=0,aeCO2=0,boPM2.5=0,boNOx=0,boSOx=0,boCO2=0)[mmsi<0]
-for(i in (1:2)){
+for(i in (1:n)){
+  if(i%%10==0){
+    print(i)
+  }
   shipmmsi=mmsis$mmsi[i]
   ship=ships[mmsi==shipmmsi,]
   lines=l[mmsi==shipmmsi&tripid>0,]#不包括轨迹线段在排放控制区意外的点
@@ -68,7 +72,10 @@ for(i in (1:2)){
 
 #其中的idx是表示该网格占对应船舶的能耗的比例
 sproxy=data.table(mmsi=0,gid=0,g.lon=0,g.lat=0,idx=0)[mmsi<0]
-for(i in (1:2)){
+for(i in (1:n)){
+  if(i%%100==0){
+    print(i)
+  }
   shipmmsi=mmsis$mmsi[i]
   ship=ships[mmsi==shipmmsi,]
   gpoints=gridPoints[mmsi==shipmmsi,]
@@ -77,8 +84,12 @@ for(i in (1:2)){
   sproxy=rbind(sproxy,proxy)
 }
 
+
 ge=data.table(mmsi=0,gid=0,g.lon=0,g.lat=0,idx=0,CO2=0,PM2.5=0,SOx=0,NOx=0)[mmsi<0,]
-for(i in (1:2)){
+for(i in (1:n)){
+  if(i%%100==0){
+    print(i)
+  }
   shipmmsi=mmsis$mmsi[i]
   shipe=em1[mmsi==shipmmsi,]
   proxyship=sproxy[mmsi==shipmmsi,]

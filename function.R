@@ -268,7 +268,7 @@ shipEmission<-function(ship,lines,mBaseEF,auxEF,boiEF){
   #-----如果要分这两种模式，可以参考port 2009中的处理方式---------------------------
   #------------aux engine-----------
   
-  auxPower=auxPowerdt[ShipClass==ship$type_en&CapacityFrom<DWT&CapacityTo>DWT]
+  auxPower=auxPowerdt[ShipClass==ship$type_en&CapacityFrom<=DWT&CapacityTo>=DWT]
   
   em[,aePM2.5:=0]
   em[,aeNOx:=0]
@@ -302,7 +302,7 @@ shipEmission<-function(ship,lines,mBaseEF,auxEF,boiEF){
   
   #------------boiler engine-----------
   
-  boiPower=boiPowerdt[ShipClass==ship$type_en&CapacityFrom<DWT&CapacityTo>DWT]
+  boiPower=boiPowerdt[ShipClass==ship$type_en&CapacityFrom<=DWT&CapacityTo>=DWT]
   
   em[,boPM2.5:=0]
   em[,boNOx:=0]
