@@ -9,10 +9,11 @@ library('ggthemes')
 # read ships
 shipfile='D://share/ships/ships.csv'
 ships=getships(shipfile);dim(ships);head(ships);setkey(ships,mmsi)
+
 eFactordt = fread('data/EmissionFactors.txt',sep=' ',header = TRUE)
 fcFactordt = fread('data/FuelCorrectionFactors.csv',sep=',',header = TRUE)
 #提取在区域内的轨迹点
-filenames=fread(input = 'D://share/Git/Rprojects/ECA/filename',header = TRUE)
+filenames=fread(input = 'D://share/Git/Rprojects/ECA/filename',header = TRUE)#博懋东部沿海集装箱船数据
 dt=data.table(mmsi=0,time=0,status=0,sog=0,lon=0,lat=0)[mmsi<0]
 for (filename in filenames$name){
   
@@ -20,10 +21,17 @@ for (filename in filenames$name){
   dt=rbind(dt,temp)
   
 }
+
+ships=inner_join(dt[,.N,mmsi],ships[!is.na(speed)&!is.na(powerkw)&!is.na(dwt)],'mmsi')#确保有AIS数据的船舶都有完整数据
 setkey(dt,mmsi,time)
+
+
+#排放控制区中的点
 polygon.points=fread(input ='D://share/Git/Rprojects/ECA/polygon' )
 idx.array=point.in.polygon(dt$lon,dt$lat,polygon.points$x,polygon.points$y)
 points=cbind(dt,idx.array)[idx.array>0,]
+#中国东部沿海
+points=cbind(dt,idx.array)
 points=points[sog<260&sog>=0,]#删掉航速大于26节的轨迹点
 scale=100
 gridPoints=setPoints(points,scale)
@@ -101,7 +109,7 @@ for(i in (1:n)){
   ge=rbind(ge,e.grid)
 }
 
-ge.total=ge[!is.na(CO2),list(CO2=sum(.SD$CO2),PM2.5=sum(.SD$PM2.5),SOx=sum(.SD$SOx),NOx=sum(.SD$NOx)),list(gid,g.lon,g.lat)]
+ge.total=ge[!is.na(CO2),list(CO2=sum(CO2),PM2.5=sum(PM2.5),SOx=sum(SOx),NOx=sum(NOx)),list(gid,g.lon,g.lat)]
 
 plotGrid(ge.total)
 

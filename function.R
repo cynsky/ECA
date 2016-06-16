@@ -340,10 +340,14 @@ shipEmission<-function(ship,lines,mBaseEF,auxEF,boiEF){
 }
 
 shipProxy<-function(ship,points){
-  
   sSpeed=ship$speed*10#service speed
   pw=ship$powerkw
   MCR=round(pw/0.9)
+  DWT=ship$dwt
+  auxPowerdt = fread('data/auxpw.csv',sep=',',header = TRUE)
+  boiPowerdt = fread('data/boilerpw.csv',sep=',',header = TRUE)
+  auxPower=auxPowerdt[ShipClass==ship$type_en&CapacityFrom<=DWT&CapacityTo>=DWT]
+  boiPower=boiPowerdt[ShipClass==ship$type_en&CapacityFrom<=DWT&CapacityTo>=DWT]
   dt2=points#points为已经网格化的轨迹点
   dt2[,mp:=0]
   dt2[,ap:=0]
