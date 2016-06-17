@@ -10,7 +10,7 @@ setPoints <- function(points,scale = 10) {
   points[,gid:= paste(floor(lon * scale) / scale,floor(lat * scale) / scale,sep =
                          '_')]
   
-  setkey(points,time)
+  #setkey(points,time)
   
   return(points)
   
@@ -340,6 +340,7 @@ shipEmission<-function(ship,lines,mBaseEF,auxEF,boiEF){
 }
 
 shipProxy<-function(ship,points){
+  
   sSpeed=ship$speed*10#service speed
   pw=ship$powerkw
   MCR=round(pw/0.9)
@@ -349,6 +350,7 @@ shipProxy<-function(ship,points){
   auxPower=auxPowerdt[ShipClass==ship$type_en&CapacityFrom<=DWT&CapacityTo>=DWT]
   boiPower=boiPowerdt[ShipClass==ship$type_en&CapacityFrom<=DWT&CapacityTo>=DWT]
   dt2=points#points为已经网格化的轨迹点
+  
   dt2[,mp:=0]
   dt2[,ap:=0]
   dt2[,bp:=0]

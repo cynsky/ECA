@@ -33,6 +33,7 @@ points=cbind(dt,idx.array)[idx.array>0,]
 #中国东部沿海
 points=cbind(dt,idx.array)
 points=points[sog<260&sog>=0,]#删掉航速大于26节的轨迹点
+points=data.table(inner_join(dt,ships[,list(mmsi)],'mmsi'))#保证所有AIS点对应船舶都有船舶技术数据
 scale=100
 gridPoints=setPoints(points,scale)
 # 数据处理：segment trajectory，在后边添加tripid,其中tripid==0表示为分割segment
@@ -110,6 +111,11 @@ for(i in (1:n)){
 }
 
 ge.total=ge[!is.na(CO2),list(CO2=sum(CO2),PM2.5=sum(PM2.5),SOx=sum(SOx),NOx=sum(NOx)),list(gid,g.lon,g.lat)]
+
+write.csv(em1,'results/china_2014_container_ship_emission.csv')
+write.csv(ge.total,'results/china_2014_container_grid_emission.csv')
+write.csv(ge,'results/china_2014_container_grid_ship_emission.csv')
+
 
 plotGrid(ge.total)
 
