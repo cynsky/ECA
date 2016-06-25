@@ -25,7 +25,7 @@ for(filedir in dirs[2:13]){
 #读入2015年所有集装箱船舶AIS数据
 filenames=list.files('D://share/AIS/globalContainer2015',full.names = TRUE)
 d=data.table(mmsi=0,time=0,status=0,sog=0,lon=0,lat=0)[mmsi<0]
-for(filename in filenames[7:12]){
+for(filename in filenames){
   
   d0=fread(filename)[,list(mmsi,time,status,sog,lon,lat)]
   d=rbind(d,d0)
@@ -35,11 +35,19 @@ setkey(d,mmsi,time)
 #去掉轨迹点少于1000
 #去掉航速小于0和航速大于1.5倍设计航速的报告点
 #每天船舶一年轨迹进行分割:获取轨迹小于
+ship1=d[mmsi=='209006000']
+ship2=ship1[sog>=0&sog<15*containers[mmsi==ship1[1,]$mmsi]$speed]
+ship3=setPoints(ship2,100)
+shiplines1=setLines(ship3)
+shiplines=addLineSpeed(shiplines1)
 
-ship1=d0[mmsi=='209098000']
+tt=ship2[sog==0,list(time,.N),list(gid,lon,lat)][N>2]
+plot(tt$lat,tt$time)
+
+
 plot(ship1$time,ship1$sog)
 dev.new()
-plot(ship1$lon,ship1$lat)
+plot(ship1[sog>0]$lon,ship1[sog>0]$lat)
 
 
 

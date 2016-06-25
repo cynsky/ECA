@@ -9,7 +9,8 @@ library('ggthemes')
 # read ships
 shipfile='D://share/ships/ships.csv'
 ships=getships(shipfile);dim(ships);head(ships);setkey(ships,mmsi)
-
+#container with all important field is not NAN.
+containers=ships[!is.na(speed)&!is.na(powerkw)&!is.na(dwt)&!is.na(mmsi)&speed>0&type_en=='Container']
 eFactordt = fread('data/EmissionFactors.txt',sep=' ',header = TRUE)
 fcFactordt = fread('data/FuelCorrectionFactors.csv',sep=',',header = TRUE)
 #提取在区域内的轨迹点
@@ -29,26 +30,34 @@ setkey(dt,mmsi,time)
 #排放控制区中的点
 polygon.points=fread(input ='D://share/Git/Rprojects/ECA/polygon' )
 idx.array=point.in.polygon(dt$lon,dt$lat,polygon.points$x,polygon.points$y)
-points=cbind(dt,idx.array)[idx.array>0,]
+points=cbind(dt,idx.array)[idx.array>0,list(mmsi,time,status,sog,lon,lat)]
 #中国东部沿海
-points=cbind(dt,idx.array)
-points=points[sog<260&sog>=0,]#删掉航速大于26节的轨迹点
-points=data.table(inner_join(dt,ships[,list(mmsi)],'mmsi'))#保证所有AIS点对应船舶都有船舶技术数据
-scale=100
-gridPoints=setPoints(points,scale)
-# 数据处理：segment trajectory，在后边添加tripid,其中tripid==0表示为分割segment
+#points=cbind(dt,idx.array)
 
-mmsis=gridPoints[,.N,mmsi][N>100,]
+points=data.table(inner_join(points,ships[!is.na(speed)&!is.na(powerkw)&!is.na(dwt),list(mmsi)],'mmsi'))#保证所有AIS点对应船舶都有船舶技术数据
+points=points[sog>=0,]#航速不小于0
+scale=100
+#gridPoints=setPoints(points,scale)
+# 数据处理：segment trajectory，在后边添加tripid,其中tripid==0表示为分割segment
+points=setPoints(points,scale)
+gridPoints=points
+mmsis=gridPoints[,.N,mmsi][N>1000,]#这里要处理轨迹点极度缺少的问题
 n=nrow(mmsis)
 l=data.table(lid=0,mmsi=0,pid1=0,pid2=0,timespan=0,distance=0,avgspeed1=0,avgspeed2=0,avgspeed=0,tripid=0)[mmsi<0]
 for(i in (1:n)){
   if(i%%100==0){
     print(i)
   }
-  p2=gridPoints[mmsi==mmsis$mmsi[i],];
-  l1=setLines(p2);
+  
+  p1=points[mmsi==mmsis$mmsi[i],];
+  p1=p1[sog>=0&sog<1.5*10*ships[mmsi==p1[1]$mmsi]$speed]
+  #p2=setPoints(p2,100)
+#   p3=data.table(left_join(p2,clusters[,list(gid,cls)],'gid'))
+#   p3[is.na(cls),cls:=0]
+  p1=p1[,list(mmsi,time,pid,gid,status,sog,lon,lat,g.lon,g.lat)]
+  l1=setLines(p1);
   l1=addLineSpeed(l1);
-  l1=l1[avgspeed<=250,]#航速不能超过25节
+  #l1=l1[avgspeed<=250,]#航速不能超过25节
   #轨迹分段
   l1=segTra(l1)
   l1=l1[,list(lid,mmsi,pid1,pid2,timespan,distance,avgspeed1,avgspeed2,avgspeed,tripid)]
@@ -56,6 +65,106 @@ for(i in (1:n)){
 }
 
 setkey(l,mmsi,lid)
+#针对每天船舶每个trip
+ammsi=209075000
+aship=l[mmsi==ammsi]
+atrip=aship[tripid==38]
+#去掉不合格点,第一次去掉直线中的所有点
+#第二次如果还有航速不对就直接用两个端点的平均值代替
+deletep=unique(c(atrip[avgspeed>250,]$pid1,atrip[avgspeed>250,]$pid2))
+tripp=data.table(pid=unique(c(atrip$pid1,atrip$pid2)))
+remainp=tripp[!pid%in%deletep]
+newp=inner_join(remainp,points[mmsi==ammsi],'pid')
+atrip=setLines(newp)
+atrip=addLineSpeed(atrip)
+atrip[avgspeed>250,avgspeed:=avgspeed1]
+
+shipp=points[mmsi==ammsi]
+missps=atrip[distance>5*1852]
+missp1=missps[2]
+lonspan=abs(missp1$lon2-missp1$lon1)
+latspan=abs(missp1$lat2-missp1$lat1)
+
+r=3#半径
+
+area1=aship0[lon1>=(missp1$g.lon1-r/scale)&lon1<=(missp1$g.lon1+r/scale)
+             &lat1>=(missp1$g.lat1-r/scale)&lat1<=(missp1$g.lat1+r/scale),list(time1,lon1,lat1,sog1,tripid)]
+area2=aship0[lon1>=missp1$g.lon2-r/scale&lon1<=missp1$g.lon2+r/scale
+             &lat1>=missp1$g.lat2-r/scale&lat1<=missp1$g.lat2+r/scale,list(time1,lon1,lat1,sog1,tripid)]
+
+t1=area1[,list(time1=median(time1)),tripid]#各个航次在第一个点的时间
+t2=area2[,list(time2=median(time1)),tripid]#各个航次在第二个点的时间
+t12=data.table(inner_join(t1,t2,'tripid'))
+t12=t12[time2>time1]#同方向
+refp=data.table(inner_join(aship0[,list(time=time1,lon1,lat1,sog1,tripid)],t12,'tripid'))[time<=time2&time>=time1]
+
+#cha zhi
+p=ggplot()
+p=p+geom_point(data=refp,aes(x=lon1,y=lat1))
+p=p+geom_point(data=atrip,aes(x=lon1,y=lat1),color='green')
+p=p+geom_point(data=missp1,aes(x=lon1,y=lat1),color='red',size=4)
+p=p+geom_point(data=missp1,aes(x=lon2,y=lat2),color='blue',size=4)
+p
+
+step=100#插值步长
+if(lonspan>=latspan){
+  
+  endp1=missp1$lon1
+  endp2=missp1$lon2
+  
+  maxlon=max(endp1,endp2)
+  minlon=min(endp1,endp2)
+  
+  bins=seq(from=(floor(minlon*step)+1)/step,to=(floor(maxlon*step)/step),by=1/step)
+  
+  len=length(bins)
+  #分组标识
+  refp[,bin:=0]
+  for(i in (1:(len-1))){
+    refp[lon1>=bins[i]&lon1<bins[i+1],bin:=i]
+  }
+  addp=refp[bin>0,list(lon=median(lon1),lat=median(lat1),sog=round(median(sog1))),bin]
+}else{
+  endp1=missp1$lat1
+  endp2=missp1$lat2
+  
+  maxlat=max(endp1,endp2)
+  minlat=min(endp1,endp2)
+  
+  bins=seq(from=(floor(minlat*step)+1)/step,to=(floor(maxlat*step)/step),by=1/step)
+  
+  len=length(bins)
+  #分组标识
+  refp[,bin:=0]
+  for(i in (1:(len-1))){
+    refp[lat1>=bins[i]&lat1<bins[i+1],bin:=i]
+  }
+  addp=refp[bin>0,list(lon=median(lon1),lat=median(lat1),sog=round(median(sog1))),bin]
+  
+  
+}
+dev.new()
+p=ggplot()
+p=p+geom_point(data=atrip,aes(x=lon1,y=lat1),color='green')
+p=p+geom_point(data=addp,aes(lon,lat),color='red')
+p
+
+
+aship0=data.table(left_join(aship,points[,list(time1=time,status1=status,sog1=sog,lon1=lon,lat1=lat,pid1=pid)],'pid1'))
+aship0=data.table(left_join(aship0,points[,list(time2=time,status2=status,sog2=sog,lon2=lon,lat2=lat,pid2=pid)],'pid2'))
+atrip=aship0[tripid==38]
+
+
+
+
+
+p=ggplot()
+p=p+geom_point(data=atrip,aes(x=lon.x,y=lat.x))
+p=p+geom_point(data=atrip[avgspeed>200],aes(x=lon.x,y=lat.x,col=as.factor(avgspeed)),size=5)
+p=p+geom_point(data=atrip[avgspeed>200],aes(x=lon.y,y=lat.y,col=as.factor(avgspeed)),size=5)
+p
+plot(atrip$lon,atrip$lat)
+
 
 #----排放及其空间分布计算
 em1=data.table(mmsi=0,speedid=0,segments=0,duration=0,mode=0,meCO2=0,mePM2.5=0,meSOx=0,meNOx=0,

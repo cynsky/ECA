@@ -45,7 +45,7 @@ addLineSpeed <- function(lines,time_threshold = 600,dist_threshold = 2) {
   lines[,avgspeed1:= round((sog1 + sog2) / 2,1)]
   lines[,avgspeed2:= round((distance / 1852) * 10 / (timespan / 3600))]# lavgspeed 与 sog 单位相同 海里/小时*10
   lines[,avgspeed:= avgspeed1];
-  lines[(distance / 1852 > dist_threshold) |
+  lines[(distance / 1852 > dist_threshold) &
           (timespan > time_threshold),avgspeed:= avgspeed2]
   return(lines)
   
@@ -381,6 +381,17 @@ shipProxy<-function(ship,points){
   proxy=dt2[,list(idx=sum(tp)/sum(dt2$tp)),list(gid,g.lon,g.lat)]
   return(proxy)
  
+}
+
+getCls<-function(dt,eps,minpnts){
+  
+ 
+  m1=dt[sog1==0&status1==5,list(lon1,lat1)]
+  cls=dbscan(m1,eps,minpnts)
+  dtcls=cbind(dt[sog1==0&status1==5],cls[[1]])
+  return (dtcls)
+  
+  
 }
 
 
