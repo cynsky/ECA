@@ -2,3 +2,15 @@
 aship0[,seg:=0]
 clusters
 
+shipp=points[mmsi==ammsi]
+
+clsp0=data.table(left_join(shipp,clusters[,list(gid,cls)],'gid'))
+clsp=clsp0[cls>0&sog==0]
+atrip=aship0[tripid==25]
+
+
+tripp=atrip[,list(mmsi,time=time1,status=status1,sog=sog1,lon=lon1,lat=lat1,gid=gid1,tripid)]
+tripp=rbind(tripp,atrip[nrow(atrip),list(mmsi,time=time1,status=status1,sog=sog1,lon=lon1,lat=lat1,gid=gid1,tripid)])
+tripseg=addSegment(tripp,clusters)
+tripseg[,.N,segid]
+

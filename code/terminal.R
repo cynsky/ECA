@@ -1,26 +1,11 @@
 #识别在排放控制区的码头和锚地，可以说是停留点
 
-cp1=points[sog==0&status%in%c(5)];dim(p2)#1为锚泊，5为锚链系泊
-cp2=setPoints(cp1,scale=1000);p3[,.N,gid]
-cp3=cp2[,list(.N,lon=mean(g.lon),lat=mean(g.lat)),gid]
-m1=cp3[,list(lon,lat)]
+clusters=detectStayArea(points,0.03,10,1000,100)
+
 # kNN(m1[1:10,],3)
 # kNNdist(m1[1:100],3)
 # kNNdistplot(m1,10)
-dev.new()
-plot(cp3$lon,cp3$lat)
-cls=dbscan(m1,0.03,10)
-cp5=cbind(cp3,cls[[1]])
 
-p=ggplot()
-p=p+geom_point(data=cp5[V2>0],aes(x=lon,y=lat,col=as.factor(V2)))
-p=p+geom_point(data=sample_n(p3,10000),aes(x=lon,y=lat))
-p=p+scale_fill_gradient('cluster',low='green',high='red')
-p=p+geom_text(data=cp5[V2>0,list(V2,lon=mean(lon),lat=mean(lat)),V2],aes(x=lon,y=lat,label=V2),size=4)
-p
-
-cpoints=setPoints(p5[V2>0,list(lon,lat,cls=V2)],100)#网格尺度与点相同都为0.01，目前有306个网格处于停顿状态
-clusters=cpoints[,list(.N),list(gid,cls)]
 #--------------------------
 scale=100
 gridPoints=setPoints(points,scale)
@@ -37,8 +22,6 @@ for(i in (1:n)){
   }
   i=1
   p2=gridPoints[mmsi==mmsis$mmsi[i],];
-  
-  
   l1=setLines(p2,scale);
   l1=addLineSpeed(l1);
   l1=l1[avgspeed<=250,]#航速不能超过25节

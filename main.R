@@ -22,10 +22,8 @@ for (filename in filenames$name){
   dt=rbind(dt,temp)
   
 }
-
 ships=inner_join(dt[,.N,mmsi],ships[!is.na(speed)&!is.na(powerkw)&!is.na(dwt)],'mmsi')#确保有AIS数据的船舶都有完整数据
 setkey(dt,mmsi,time)
-
 
 #排放控制区中的点
 polygon.points=fread(input ='D://share/Git/Rprojects/ECA/polygon' )
@@ -48,42 +46,62 @@ for(i in (1:n)){
   if(i%%100==0){
     print(i)
   }
-  
   p1=points[mmsi==mmsis$mmsi[i],];
   p1=p1[sog>=0&sog<1.5*10*ships[mmsi==p1[1]$mmsi]$speed]
-  #p2=setPoints(p2,100)
-#   p3=data.table(left_join(p2,clusters[,list(gid,cls)],'gid'))
-#   p3[is.na(cls),cls:=0]
   p1=p1[,list(mmsi,time,pid,gid,status,sog,lon,lat,g.lon,g.lat)]
   l1=setLines(p1);
   l1=addLineSpeed(l1);
-  #l1=l1[avgspeed<=250,]#航速不能超过25节
   #轨迹分段
-  l1=segTra(l1)
+  l1=addTrip(l1)
   l1=l1[,list(lid,mmsi,pid1,pid2,timespan,distance,avgspeed1,avgspeed2,avgspeed,tripid)]
   l=rbind(l,l1)
 }
 
 setkey(l,mmsi,lid)
-#针对每天船舶每个trip
-ammsi=209075000
-aship=l[mmsi==ammsi]
-atrip=aship[tripid==38]
-#去掉不合格点,第一次去掉直线中的所有点
-#第二次如果还有航速不对就直接用两个端点的平均值代替
-deletep=unique(c(atrip[avgspeed>250,]$pid1,atrip[avgspeed>250,]$pid2))
-tripp=data.table(pid=unique(c(atrip$pid1,atrip$pid2)))
-remainp=tripp[!pid%in%deletep]
-newp=inner_join(remainp,points[mmsi==ammsi],'pid')
-atrip=setLines(newp)
-atrip=addLineSpeed(atrip)
-atrip[avgspeed>250,avgspeed:=avgspeed1]
 
+#-----针对每天船舶每个tripid 进行segment 分割------------------
+ammsi=209075000
 shipp=points[mmsi==ammsi]
-missps=atrip[distance>5*1852]
-missp1=missps[2]
-lonspan=abs(missp1$lon2-missp1$lon1)
-latspan=abs(missp1$lat2-missp1$lat1)
+shipspeed=ships[mmsi==ammsi]$speed*10
+aship=l[mmsi==ammsi]
+aship0=data.table(left_join(aship,points[,list(time1=time,status1=status,sog1=sog,lon1=lon,lat1=lat,pid1=pid,gid1=gid)],'pid1'))
+aship0=data.table(left_join(aship0,points[,list(time2=time,status2=status,sog2=sog,lon2=lon,lat2=lat,pid2=pid,gid2=gid)],'pid2'))
+atrip=aship0[tripid==38]
+
+#--------去掉每个trip的不合理轨迹点，并根据停留区域分割轨迹------
+tripids=aship0[tripid>0,.N,tripid]$tripid#tripid=0时为trip分割航段
+segments=data.table(gid=0,mmsi=0,time=0,status=0,sog=0,lon=0,lat=0,tripid=0,cls=0,segid=0,scls=0,ecls=0)[mmsi<0]
+for(id in tripids){
+  print(id)
+  atrip=aship0[tripid==id]
+  #去掉不合理平均航速的轨迹点
+  atrip=delectBigAvgSpeed(shipp,speedscale=1.3,atrip)
+  tripp=atrip[,list(mmsi,time=time1,status=status1,sog=sog1,lon=lon1,lat=lat1,gid=gid1,tripid)]
+  tripp=rbind(tripp,atrip[nrow(atrip),list(mmsi,time=time2,status=status2,sog=sog2,lon=lon2,lat=lat2,gid=gid2,tripid)])
+  tripseg=addSegment(tripp,clusters)
+  segments=rbind(segments,tripseg)
+}
+segments=segments[,list(mmsi,time,status,sog,lon,lat,tripid,segid,scls,ecls,cls)]
+setkey(segments,mmsi,time)
+segments[segid>0&tripid>0,.N,list(tripid,segid)]
+
+#-----缺失轨迹插值--------
+ss=setPoints(segments,scale=100)#segment points
+sl=getSegmentLines(ss)
+
+missLines=sl[distance>5*1852]
+shipdwt=ships[mmsi==missLines[1]$mmsi]$dwt
+refmmsis=ships[dwt>=0.95*shipdwt&dwt<=1.05*shipdwt]$mmsi
+refpoints=points[mmsi%in%refmmsis]
+for(i in (1:nrow(missLines))){
+  i=1
+  ln=missLines[i,]
+  
+  
+}
+
+lonspan=abs(ln$lon2-ln$lon1)
+latspan=abs(ln$lat2-ln$lat1)
 
 r=3#半径
 
@@ -143,6 +161,8 @@ if(lonspan>=latspan){
   
   
 }
+
+
 dev.new()
 p=ggplot()
 p=p+geom_point(data=atrip,aes(x=lon1,y=lat1),color='green')
@@ -150,9 +170,7 @@ p=p+geom_point(data=addp,aes(lon,lat),color='red')
 p
 
 
-aship0=data.table(left_join(aship,points[,list(time1=time,status1=status,sog1=sog,lon1=lon,lat1=lat,pid1=pid)],'pid1'))
-aship0=data.table(left_join(aship0,points[,list(time2=time,status2=status,sog2=sog,lon2=lon,lat2=lat,pid2=pid)],'pid2'))
-atrip=aship0[tripid==38]
+
 
 
 
