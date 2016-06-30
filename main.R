@@ -59,7 +59,7 @@ for(i in (1:n)){
 
 setkey(l,mmsi,lid)
 
-#-----针对每天船舶每个tripid 进行segment 分割------------------
+#-----针对每条船舶每个tripid 进行segment 分割------------------
 ammsi=209075000
 shipp=points[mmsi==ammsi]
 shipspeed=ships[mmsi==ammsi]$speed*10
@@ -88,90 +88,43 @@ segments[segid>0&tripid>0,.N,list(tripid,segid)]
 #-----缺失轨迹插值--------
 ss=setPoints(segments,scale=100)#segment points
 sl=getSegmentLines(ss)
-
-missLines=sl[distance>5*1852]
-shipdwt=ships[mmsi==missLines[1]$mmsi]$dwt
+missLines=sl[distance>5*1852]#所有船舶
+addedPoints=data.table(mmsi=0,time=0,status=0,sog=0,lon=0,lat=0,tripid=0,segid=0,scls=0,ecls=0,cls=0)[mmsi<0]
+# get points from ships with similar dwt and same type
+shipdwt=ships[mmsi==missLines[1]$mmsi]$dwt#第一艘船
 refmmsis=ships[dwt>=0.95*shipdwt&dwt<=1.05*shipdwt]$mmsi
-refpoints=points[mmsi%in%refmmsis]
+refpoints=segments[mmsi%in%refmmsis]
+
 for(i in (1:nrow(missLines))){
-  i=1
-  ln=missLines[i,]
+  i=14
+  ln=missLines[i,] 
+  refp=getRefPoints(ln,refpoints,r=3,samedirection=1,scale=100)
+  #---利用每个seg的航行距离,剥离不合理的seg----
+  refp2=refineRefpoints(refp,epsscale=0.2,minpnt=5)
+  #-----加入缺失点------
+  addp=addMissPoints(ln,refp2,100,3)
+  addedPoints=rbind(addedPoints,addp)
   
   
 }
 
-lonspan=abs(ln$lon2-ln$lon1)
-latspan=abs(ln$lat2-ln$lat1)
-
-r=3#半径
-
-area1=aship0[lon1>=(missp1$g.lon1-r/scale)&lon1<=(missp1$g.lon1+r/scale)
-             &lat1>=(missp1$g.lat1-r/scale)&lat1<=(missp1$g.lat1+r/scale),list(time1,lon1,lat1,sog1,tripid)]
-area2=aship0[lon1>=missp1$g.lon2-r/scale&lon1<=missp1$g.lon2+r/scale
-             &lat1>=missp1$g.lat2-r/scale&lat1<=missp1$g.lat2+r/scale,list(time1,lon1,lat1,sog1,tripid)]
-
-t1=area1[,list(time1=median(time1)),tripid]#各个航次在第一个点的时间
-t2=area2[,list(time2=median(time1)),tripid]#各个航次在第二个点的时间
-t12=data.table(inner_join(t1,t2,'tripid'))
-t12=t12[time2>time1]#同方向
-refp=data.table(inner_join(aship0[,list(time=time1,lon1,lat1,sog1,tripid)],t12,'tripid'))[time<=time2&time>=time1]
-
+atrip=refpoints[tripid==ln$tripid1&segid==ln$segid1]
 #cha zhi
 p=ggplot()
-p=p+geom_point(data=refp,aes(x=lon1,y=lat1))
-p=p+geom_point(data=atrip,aes(x=lon1,y=lat1),color='green')
-p=p+geom_point(data=missp1,aes(x=lon1,y=lat1),color='red',size=4)
-p=p+geom_point(data=missp1,aes(x=lon2,y=lat2),color='blue',size=4)
+p=p+geom_point(data=refp,aes(x=lon,y=lat))
+p=p+geom_point(data=atrip,aes(x=lon,y=lat),color='green')
+p=p+geom_point(data=ln,aes(x=lon1,y=lat1),color='red',size=4)
+p=p+geom_point(data=ln,aes(x=lon2,y=lat2),color='blue',size=4)
 p
-
-step=100#插值步长
-if(lonspan>=latspan){
-  
-  endp1=missp1$lon1
-  endp2=missp1$lon2
-  
-  maxlon=max(endp1,endp2)
-  minlon=min(endp1,endp2)
-  
-  bins=seq(from=(floor(minlon*step)+1)/step,to=(floor(maxlon*step)/step),by=1/step)
-  
-  len=length(bins)
-  #分组标识
-  refp[,bin:=0]
-  for(i in (1:(len-1))){
-    refp[lon1>=bins[i]&lon1<bins[i+1],bin:=i]
-  }
-  addp=refp[bin>0,list(lon=median(lon1),lat=median(lat1),sog=round(median(sog1))),bin]
-}else{
-  endp1=missp1$lat1
-  endp2=missp1$lat2
-  
-  maxlat=max(endp1,endp2)
-  minlat=min(endp1,endp2)
-  
-  bins=seq(from=(floor(minlat*step)+1)/step,to=(floor(maxlat*step)/step),by=1/step)
-  
-  len=length(bins)
-  #分组标识
-  refp[,bin:=0]
-  for(i in (1:(len-1))){
-    refp[lat1>=bins[i]&lat1<bins[i+1],bin:=i]
-  }
-  addp=refp[bin>0,list(lon=median(lon1),lat=median(lat1),sog=round(median(sog1))),bin]
-  
-  
-}
 
 
 dev.new()
 p=ggplot()
-p=p+geom_point(data=atrip,aes(x=lon1,y=lat1),color='green')
+p=p+geom_point(data=atrip,aes(x=lon,y=lat),color='green')
 p=p+geom_point(data=addp,aes(lon,lat),color='red')
+p=p+geom_point(data=ln,aes(x=lon1,y=lat1),color='black',size=4)
+p=p+geom_point(data=ln,aes(x=lon2,y=lat2),color='blue',size=4)
 p
-
-
-
-
 
 
 

@@ -494,41 +494,80 @@ getMissLines<-function(segments,distanceScale=5){
 #两点间插值
 #两个点之间距离较大时插值算法，一般两点距离大于5海里
 #r 为 或者网格半径，几个网格
-#p1,p2为两个轨迹点，p1为第一个p2为第二个
-#p1:mmsi,time1,status1,sog1,lon1,lat1,gid1,g.lon1,g.lat1
-#p2:mmsi,time2,status2,sog2,lon2,lat2,gid2,g.lon2,g.lat2
-#points：为用于轨迹推测的大数据点，mmsi,time,status,sog1,lon,lat,gid,g.lon,g.lat,tripid,segid,scls,ecls
+#ln为缺失轨迹航段
+#similarshipp：为用于轨迹推测的大数据点，mmsi,time,status,sog,lon,lat,gid,g.lon,g.lat,tripid,segid,scls,ecls,cls
 
+#找一个缺失航段的最初参考轨迹点
 
-getRefPoints<-function(allpoints,p1,p2,r=3){
+getRefPoints<-function(ln,similarshipp,r=3,samedirection=1,scale=100){
   
-  #缺失轨迹插值
-  p1=missp1[,list(mmsi,status1,time)]
-  lonspan=abs(p2$lon-p1$lon)
-  latspan=abs(p2$lat-p1$lat)
-  
-  area1=allpoints[lon>=(p1$g.lon1-r/scale)&lon<=(p1$g.lon+r/scale)
-               &lat>=(p1$g.lat-r/scale)&lat<=(p1$g.lat+r/scale),list(time,lon,lat,sog,tripid,segid,scls,ecls)]
-  area2=allpoints[lon>=(p2$g.lon-r/scale)&lon<=(p2$g.lon+r/scale)
-               &lat>=(p2$g.lat-r/scale)&lat<=(p2$g.lat+r/scale),list(time,lon,lat,sog,tripid,segid,scls,ecls)]
+  refpoints=similarshipp
+ 
+  area1=refpoints[lon>=(ln$g.lon1-r/scale)&lon<=(ln$g.lon1+r/scale)
+                  &lat>=(ln$g.lat1-r/scale)&lat<=(ln$g.lat1+r/scale),list(time,lon,lat,sog,tripid,segid)][segid>0]
+  area2=refpoints[lon>=ln$g.lon2-r/scale&lon<=ln$g.lon2+r/scale
+                  &lat>=ln$g.lat2-r/scale&lat<=ln$g.lat2+r/scale,list(time,lon,lat,sog,tripid,segid)][segid>0]
   
   t1=area1[,list(time1=median(time)),list(tripid,segid)]#各个航次在第一个点的时间
   t2=area2[,list(time2=median(time)),list(tripid,segid)]#各个航次在第二个点的时间
   t12=data.table(inner_join(t1,t2,c('tripid','segid')))
-  t12=t12[time2>time1]#同方向
-  refp=data.table(inner_join(allpoints[,list(time=time1,lon1,lat1,sog1,tripid)],t12,c('tripid','segid')))[time<=time2&time>=time1]
+  if(samedirection){
+    t12=t12[time2>time1]#同方向
+  }
+  print(nrow(t12))
+  refp=data.table(inner_join(refpoints,t12,c('tripid','segid')))[time<=time2&time>=time1]
+  refp=refp[!(tripid==ln$tripid1&segid==ln$segid1)]#去掉自己的tripid和segid的
+  return(refp)
+}
 
+#refp 为初步refpoints，需要进行一步分析去掉不合理的segid
+#这里主要用segid的航行距离dbscan聚类，取成员最多类为参考轨迹
+#dbscan中，eps为0.2*mediam（所有seg距离），0.2可以改，
+#dbscan中的minpnt为个数，minpnt设置
+
+refineRefpoints<-function(refp,epsscale=0.2,minpnt=5){
+  
+  #---利用每个seg的航行距离,剥离不合理的seg----
+  #聚类算法，只用一个类中seg最多的类为refpoints
+  dist=data.table(tripid=0,segid=0,totaldist=0)[tripid<0]
+  segs=refp[,.N,list(tripid,segid)]
+  for(i in (1:nrow(segs))){
+    
+    seg=refp[tripid==segs[i]$tripid&segid==segs[i]$segid]
+    setkey(seg,time)
+    rp=setLines(seg[,list(mmsi,time,status,sog,lon,lat,pid,gid,g.lon,g.lat)])
+    rl=addLineSpeed(rp)
+    temp=cbind(seg[1,list(tripid,segid)],totaldist=sum(rl$distance))
+    dist=rbind(dist,temp)
+    
+  }
+  
+  #聚类分析得到较合理的参考轨迹点，这里用距离为参数
+  refcls=dbscan(dist[,totaldist],epsscale*median(dist$totaldist),minpnt)
+  dist2=dist[,refcls:=refcls[[1]]]
+  top1cls=dist2[,.N,refcls][N==max(N),]$refcls[1]
+  refp2=data.table(inner_join(refp,dist2[refcls==top1cls,],c('tripid','segid')))
+  refp2=refp2[sog>1]
+  return(refp2)
+  
 }
 
 #主要用于内部函数
-#p1和p2为两个端点，p1在前p2在后
-#step为插值时的间隔距离，没多少距离一个点，一般为一个0.01度的区间一个点。
-addMissPoints<-function(p1,p2,step=100,refPoints){
+#missln为轨迹缺失的线段
+#gridnum为每个网格插值个数
+#scale为网格尺度，一般为100，也就是0.01*0.01
+
+
+addMissPoints<-function(missln,refpoints,scale=100,gridnum=2){
+  ln=missln
+  refp2=refpoints
+  lonspan=abs(ln$lon2-ln$lon1)
+  latspan=abs(ln$lat2-ln$lat1)
   
   if(lonspan>=latspan){
-    
-    endp1=missp1$lon1
-    endp2=missp1$lon2
+    step=round(lonspan*scale)*gridnum#插值步长
+    endp1=ln$lon1
+    endp2=ln$lon2
     
     maxlon=max(endp1,endp2)
     minlon=min(endp1,endp2)
@@ -537,14 +576,57 @@ addMissPoints<-function(p1,p2,step=100,refPoints){
     
     len=length(bins)
     #分组标识
-    refp[,bin:=0]
+    refp2[,bin:=0]
     for(i in (1:(len-1))){
-      refp[lon1>=bins[i]&lon1<bins[i+1],bin:=i]
+      refp2[lon>=bins[i]&lon<bins[i+1],bin:=i]
     }
-    addp=refp[bin>0,list(lon=median(lon1),lat=median(lat1),sog=round(median(sog1))),bin]
+    addp=refp2[bin>0,list(lon=median(lon),lat=median(lat),sog=round(median(sog))),bin]
+    setkey(addp,bin)
+    addp[,bin:=NULL]
+    addp[,mmsi:=ln$mmsi]
+    addp[,tripid:=ln$tripid1]
+    addp[,segid:=ln$segid1]
+    addp[,status:=ln$status1]
+    addp[,scls:=ln$scls1]
+    addp[,ecls:=ln$ecls1]
+    addp[,cls:=ln$cls1]
+    
+    
+    #-----计算时间和速度，速度为平均速度，时间根据平均速度和距离计算------
+    firstp=ln[,list(lon=lon1,lat=lat1,sog=sog1,mmsi,tripid=tripid1,segid=segid1,
+                    status=status1,scls=scls1,ecls=ecls1,cls=cls1)]
+    lastp=ln[,list(lon=lon2,lat=lat2,sog=sog2,mmsi,tripid=tripid2,segid=segid2,
+                   status=status2,scls=scls2,ecls=ecls2,cls=cls2)]
+    
+    addp2=rbind(firstp,addp,lastp)
+    setkey(addp2,lon)
+    temp0=data.table(id=0,dd=0)[id<0]
+    
+    for(i in (1:(nrow(addp2)-1))){
+      
+      fp=addp2[i]
+      sp=addp2[i+1]
+      dd=distance(fp$lon,fp$lat,sp$lon,sp$lat)
+      temp=data.table(id=i,dd=dd)
+      temp0=rbind(temp0,temp)
+      
+    }
+    
+    avgspeed=sum(temp0$dd)*10/1852/(ln$timespan/3600)
+    
+    for (i in (1:(nrow(addp2)-2))){
+      sumd=sum(temp0[1:i,]$dd)
+      temp0[i,time:=(ln$time1+(sumd/1852)*10/(avgspeed)*3600)]
+    }
+    
+    addp=cbind(addp[,sog:=round(avgspeed)],time=temp0[1:nrow(addp),]$time)
+    
+    addp=addp[,list(mmsi,time,status,sog,lon,lat,tripid,segid,scls,ecls,cls)]
+    
   }else{
-    endp1=missp1$lat1
-    endp2=missp1$lat2
+    step=round(latspan*scale)*gridnum
+    endp1=ln$lat1
+    endp2=ln$lat2
     
     maxlat=max(endp1,endp2)
     minlat=min(endp1,endp2)
@@ -553,12 +635,53 @@ addMissPoints<-function(p1,p2,step=100,refPoints){
     
     len=length(bins)
     #分组标识
-    refp[,bin:=0]
+    refp2[,bin:=0]
     for(i in (1:(len-1))){
-      refp[lat1>=bins[i]&lat1<bins[i+1],bin:=i]
+      refp2[lat>=bins[i]&lat<bins[i+1],bin:=i]
     }
-    addp=refp[bin>0,list(lon=median(lon1),lat=median(lat1),sog=round(median(sog1))),bin]
-  
+    addp=refp2[bin>0,list(lon=median(lon),lat=median(lat),sog=round(median(sog))),bin]
+    setkey(addp,bin)
+    addp[,bin:=NULL]
+    addp[,mmsi:=ln$mmsi]
+    addp[,tripid:=ln$tripid1]
+    addp[,segid:=ln$segid1]
+    addp[,status:=ln$status1]
+    addp[,scls:=ln$scls1]
+    addp[,ecls:=ln$ecls1]
+    addp[,cls:=ln$cls1]
+    
+    #-----计算时间和速度，速度为平均速度，时间根据平均速度和距离计算------
+    firstp=ln[,list(lon=lon1,lat=lat1,sog=sog1,mmsi,tripid=tripid1,segid=segid1,
+                    status=status1,scls=scls1,ecls=ecls1,cls=cls1)]
+    lastp=ln[,list(lon=lon2,lat=lat2,sog=sog2,mmsi,tripid=tripid2,segid=segid2,
+                   status=status2,scls=scls2,ecls=ecls2,cls=cls2)]
+    
+    addp2=rbind(firstp,addp,lastp)
+    setkey(addp2,lon)
+    temp0=data.table(id=0,dd=0)[id<0]
+    
+    for(i in (1:(nrow(addp2)-1))){
+      
+      fp=addp2[i]
+      sp=addp2[i+1]
+      dd=distance(fp$lon,fp$lat,sp$lon,sp$lat)
+      temp=data.table(id=i,dd=dd)
+      temp0=rbind(temp0,temp)
+      
+    }
+    
+    avgspeed=sum(temp0$dd)*10/1852/(ln$timespan/3600)
+    
+    for (i in (1:(nrow(addp2)-2))){
+      sumd=sum(temp0[1:i,]$dd)
+      temp0[i,time:=(ln$time1+(sumd/1852)*10/(avgspeed)*3600)]
+    }
+    
+    addp=cbind(addp[,sog:=round(avgspeed)],time=temp0[1:nrow(addp),]$time)
+    addp=addp[,list(mmsi,time,status,sog,lon,lat,tripid,segid,scls,ecls,cls)]
   }
+  
+  return(addp)
+  
 }
 
