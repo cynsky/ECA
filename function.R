@@ -1,7 +1,7 @@
 
 
 #default scale is 10
-setPoints <- function(points,scale = 10) {
+setPoints <- function(points,scale = 100) {
   n = nrow(points)
   
   points[,pid:= seq(1,n,1)]
@@ -395,9 +395,42 @@ getCls<-function(dt,eps,minpnts){
 
 
 #------break a trip into segments-------------
+#ammsi该船舶mmsi号
+#points0去掉了sog<0和大于1.5倍设计航速的轨迹点全集
+#speedscale=1.3#计算的平均航速不能大于1.3倍设计航速
+#shipspeed,船舶设计航速或者服务航速
+segmentOneShip<-function(ammsi,points0,clusters,shipspeed,speedscale){
+  
+  shipp=points0[mmsi==ammsi]#points0已去掉了sog>1.5speed 的轨迹点
+  aship=l[mmsi==ammsi]
+  aship0=data.table(left_join(aship,points0[,list(time1=time,status1=status,sog1=sog,lon1=lon,lat1=lat,pid1=pid,gid1=gid)],'pid1'))
+  aship0=data.table(left_join(aship0,points0[,list(time2=time,status2=status,sog2=sog,lon2=lon,lat2=lat,pid2=pid,gid2=gid)],'pid2'))
+  
+  #--------去掉每个trip的不合理轨迹点，并根据停留区域分割轨迹------
+  
+  tripids=aship0[tripid>0,.N,tripid]$tripid#tripid=0时为trip分割航段
+  shipsegments=data.table(gid=0,mmsi=0,time=0,status=0,sog=0,lon=0,lat=0,tripid=0,cls=0,segid=0,scls=0,ecls=0)[mmsi<0]
+  for(id in tripids){
+    print(id)
+    atrip=aship0[tripid==id]
+    #去掉不合理平均航速的轨迹点
+    atrip=delectBigAvgSpeed(shipp,shipspeed,speedscale,atrip)
+    tripp=atrip[,list(mmsi,time=time1,status=status1,sog=sog1,lon=lon1,lat=lat1,gid=gid1,tripid)]
+    tripp=rbind(tripp,atrip[nrow(atrip),list(mmsi,time=time2,status=status2,sog=sog2,lon=lon2,lat=lat2,gid=gid2,tripid)])
+    tripseg=addSegment(tripp,clusters)
+    shipsegments=rbind(shipsegments,tripseg)
+  }
+  
+  
+  return(shipsegments)
+  
+}
+
 #tripp:mmsi,time,lon,lat,sog,gid
 #clusters: gid, cls
 #result:gid,mmsi,time,status,sog,lon,lat,tripid,cls,segid,scls,ecls
+
+
 addSegment<-function(tripp,clusters){
   tripc=data.table(left_join(tripp,clusters[,list(gid,cls)],'gid'))
   #虽然在停留区，但是如果航速大于0，也不算在停留，
@@ -431,7 +464,7 @@ getSegmentLines<-function(segments){
   tripids=segments[tripid>0,.N,tripid]$tripid
   sl0=data.table(lid=0,mmsi=0,pid1=0,pid2=0,timespan=0,distance=0,avgspeed1=0,avgspeed2=0,avgspeed=0)[mmsi<0]
   for(id in tripids){
-    print(id)
+    
     temp=setLines(segments[tripid==id])#segment lines
     temp=addLineSpeed(temp)
     sl0=rbind(sl0,temp[,list(lid,mmsi,pid1,pid2,timespan,distance,avgspeed1,avgspeed2,avgspeed)])
@@ -459,7 +492,7 @@ detectStayArea<-function(points,eps=0.03,minpnt=10,clusterscale=1000,gridscale=1
   cls=dbscan(m1,eps,minpnt)
   cp5=cbind(cp3,cls[[1]])
   
-  cpoints=setPoints(p5[V2>0,list(lon,lat,cls=V2)],gridscale)#网格尺度与点相同都为0.01，目前有306个网格处于停顿状态
+  cpoints=setPoints(cp5[V2>0,list(lon,lat,cls=V2)],gridscale)#网格尺度与点相同都为0.01，目前有306个网格处于停顿状态
   clusters=cpoints[,list(.N),list(gid,cls)]
   
   return(clusters[,list(gid,cls)])
@@ -467,14 +500,14 @@ detectStayArea<-function(points,eps=0.03,minpnt=10,clusterscale=1000,gridscale=1
 #去掉不合格点,第一次去掉直线中的所有点
 #第二次如果还有航速不对还去掉这两个端点
 #shipp一条船的轨迹点
-delectBigAvgSpeed<-function(shipp,speedscale=1.3,atrip){
+delectBigAvgSpeed<-function(shipp,shipspeed,speedscale=1.3,atrip){
   tid=atrip[1]$tripid
   while(nrow(atrip[avgspeed>speedscale*shipspeed])>0){
     
     deletep=unique(c(atrip[avgspeed>speedscale*shipspeed,]$pid1,atrip[avgspeed>speedscale*shipspeed,]$pid2))
     tripp=data.table(pid=unique(c(atrip$pid1,atrip$pid2)))
     remainp=tripp[!pid%in%deletep]
-    newp=inner_join(remainp,shipp,'pid')
+    newp=data.table(inner_join(remainp,shipp,'pid'))
     atrip=setLines(newp)
     atrip=addLineSpeed(atrip)
     atrip[,tripid:=tid]
@@ -485,12 +518,7 @@ delectBigAvgSpeed<-function(shipp,speedscale=1.3,atrip){
   
 }
 
-getMissLines<-function(segments,distanceScale=5){
-  
-  setp
-  
-  return(missLines)
-}
+
 #两点间插值
 #两个点之间距离较大时插值算法，一般两点距离大于5海里
 #r 为 或者网格半径，几个网格
@@ -504,19 +532,23 @@ getRefPoints<-function(ln,similarshipp,r=3,samedirection=1,scale=100){
   refpoints=similarshipp
  
   area1=refpoints[lon>=(ln$g.lon1-r/scale)&lon<=(ln$g.lon1+r/scale)
-                  &lat>=(ln$g.lat1-r/scale)&lat<=(ln$g.lat1+r/scale),list(time,lon,lat,sog,tripid,segid)][segid>0]
+                  &lat>=(ln$g.lat1-r/scale)&lat<=(ln$g.lat1+r/scale),list(mmsi,time,lon,lat,sog,tripid,segid)][segid>0]
   area2=refpoints[lon>=ln$g.lon2-r/scale&lon<=ln$g.lon2+r/scale
-                  &lat>=ln$g.lat2-r/scale&lat<=ln$g.lat2+r/scale,list(time,lon,lat,sog,tripid,segid)][segid>0]
+                  &lat>=ln$g.lat2-r/scale&lat<=ln$g.lat2+r/scale,list(mmsi,time,lon,lat,sog,tripid,segid)][segid>0]
   
-  t1=area1[,list(time1=median(time)),list(tripid,segid)]#各个航次在第一个点的时间
-  t2=area2[,list(time2=median(time)),list(tripid,segid)]#各个航次在第二个点的时间
-  t12=data.table(inner_join(t1,t2,c('tripid','segid')))
+  t1=area1[,list(time1=median(time)),list(mmsi,tripid,segid)]#各个航次在第一个点的时间
+  t2=area2[,list(time2=median(time)),list(mmsi,tripid,segid)]#各个航次在第二个点的时间
+  t12=data.table(inner_join(t1,t2,c('mmsi','tripid','segid')))
   if(samedirection){
     t12=t12[time2>time1]#同方向
   }
-  print(nrow(t12))
-  refp=data.table(inner_join(refpoints,t12,c('tripid','segid')))[time<=time2&time>=time1]
-  refp=refp[!(tripid==ln$tripid1&segid==ln$segid1)]#去掉自己的tripid和segid的
+  
+  refp=data.table(inner_join(refpoints,t12,c('mmsi','tripid','segid')))[time<=time2&time>=time1]
+  refp=refp[!(mmsi==ln$mmsi&tripid==ln$tripid1&segid==ln$segid1)]#去掉自己的tripid和segid的
+  #考虑到停留点问题
+  if(ln$sog1>10&ln$sog2>10){
+    refp=refp[sog>10]
+  }
   return(refp)
 }
 
@@ -529,25 +561,29 @@ refineRefpoints<-function(refp,epsscale=0.2,minpnt=5){
   
   #---利用每个seg的航行距离,剥离不合理的seg----
   #聚类算法，只用一个类中seg最多的类为refpoints
-  dist=data.table(tripid=0,segid=0,totaldist=0)[tripid<0]
-  segs=refp[,.N,list(tripid,segid)]
+  dist=data.table(mmsi=0,tripid=0,segid=0,totaldist=0,totaltime=0)[tripid<0]
+  segs=refp[,.N,list(mmsi,tripid,segid)]
+  
   for(i in (1:nrow(segs))){
     
-    seg=refp[tripid==segs[i]$tripid&segid==segs[i]$segid]
-    setkey(seg,time)
+    seg=refp[mmsi==segs[i]$mmsi&tripid==segs[i]$tripid&segid==segs[i]$segid]
+    setkey(seg,mmsi,time)
     rp=setLines(seg[,list(mmsi,time,status,sog,lon,lat,pid,gid,g.lon,g.lat)])
     rl=addLineSpeed(rp)
-    temp=cbind(seg[1,list(tripid,segid)],totaldist=sum(rl$distance))
+    temp=cbind(seg[1,list(mmsi,tripid,segid)],totaldist=sum(rl$distance),totaltime=sum(rl$timespan))
     dist=rbind(dist,temp)
     
   }
   
   #聚类分析得到较合理的参考轨迹点，这里用距离为参数
+  mediantime=median(dist$totaltime)
+  dist=dist[abs(totaltime-mediantime)/mediantime<=3]
   refcls=dbscan(dist[,totaldist],epsscale*median(dist$totaldist),minpnt)
   dist2=dist[,refcls:=refcls[[1]]]
   top1cls=dist2[,.N,refcls][N==max(N),]$refcls[1]
-  refp2=data.table(inner_join(refp,dist2[refcls==top1cls,],c('tripid','segid')))
-  refp2=refp2[sog>1]
+  refp2=data.table(inner_join(refp,dist2[refcls==top1cls,],c('mmsi','tripid','segid')))
+  
+ # refp2=refp2[sog>10]
   return(refp2)
   
 }
@@ -565,14 +601,14 @@ addMissPoints<-function(missln,refpoints,scale=100,gridnum=2){
   latspan=abs(ln$lat2-ln$lat1)
   
   if(lonspan>=latspan){
-    step=round(lonspan*scale)*gridnum#插值步长
+    
     endp1=ln$lon1
     endp2=ln$lon2
     
     maxlon=max(endp1,endp2)
     minlon=min(endp1,endp2)
     
-    bins=seq(from=(floor(minlon*step)+1)/step,to=(floor(maxlon*step)/step),by=1/step)
+    bins=seq(from=(floor(minlon*scale)+1)/scale,to=(floor(maxlon*scale)/scale),by=1/(scale*gridnum))
     
     len=length(bins)
     #分组标识
@@ -624,14 +660,14 @@ addMissPoints<-function(missln,refpoints,scale=100,gridnum=2){
     addp=addp[,list(mmsi,time,status,sog,lon,lat,tripid,segid,scls,ecls,cls)]
     
   }else{
-    step=round(latspan*scale)*gridnum
+    
     endp1=ln$lat1
     endp2=ln$lat2
     
     maxlat=max(endp1,endp2)
     minlat=min(endp1,endp2)
     
-    bins=seq(from=(floor(minlat*step)+1)/step,to=(floor(maxlat*step)/step),by=1/step)
+    bins=seq(from=(floor(minlat*scale)+1)/scale,to=(floor(maxlat*scale)/scale),by=(1/(scale*gridnum)))
     
     len=length(bins)
     #分组标识

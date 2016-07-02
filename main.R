@@ -34,11 +34,23 @@ points=cbind(dt,idx.array)[idx.array>0,list(mmsi,time,status,sog,lon,lat)]
 
 points=data.table(inner_join(points,ships[!is.na(speed)&!is.na(powerkw)&!is.na(dwt),list(mmsi)],'mmsi'))#保证所有AIS点对应船舶都有船舶技术数据
 points=points[sog>=0,]#航速不小于0
+points0=data.table(mmsi=0,time=0,status=0,sog=0,lon=0,lat=0)[mmsi<0]
+mmsis=points[,.N,mmsi]$mmsi
+for(i in (1:length(mmsis))){
+  if(i%%100==0){
+    print(i)
+  }
+  p1=points[mmsi==mmsis[i],list(mmsi,time,status,sog,lon,lat)];
+  p1=p1[sog>=0&sog<1.5*10*ships[mmsi==p1[1]$mmsi]$speed]
+  points0=rbind(points0,p1)
+}
 scale=100
+points0=setPoints(points0,scale)
+setkey(points0,mmsi,time)
 #gridPoints=setPoints(points,scale)
 # 数据处理：segment trajectory，在后边添加tripid,其中tripid==0表示为分割segment
-points=setPoints(points,scale)
-gridPoints=points
+
+gridPoints=points0
 mmsis=gridPoints[,.N,mmsi][N>1000,]#这里要处理轨迹点极度缺少的问题
 n=nrow(mmsis)
 l=data.table(lid=0,mmsi=0,pid1=0,pid2=0,timespan=0,distance=0,avgspeed1=0,avgspeed2=0,avgspeed=0,tripid=0)[mmsi<0]
@@ -46,9 +58,9 @@ for(i in (1:n)){
   if(i%%100==0){
     print(i)
   }
-  p1=points[mmsi==mmsis$mmsi[i],];
-  p1=p1[sog>=0&sog<1.5*10*ships[mmsi==p1[1]$mmsi]$speed]
-  p1=p1[,list(mmsi,time,pid,gid,status,sog,lon,lat,g.lon,g.lat)]
+  p1=points0[mmsi==mmsis$mmsi[i],];
+#   p1=p1[sog>=0&sog<1.5*10*ships[mmsi==p1[1]$mmsi]$speed]
+#   p1=p1[,list(mmsi,time,pid,gid,status,sog,lon,lat,g.lon,g.lat)]
   l1=setLines(p1);
   l1=addLineSpeed(l1);
   #轨迹分段
@@ -60,58 +72,74 @@ for(i in (1:n)){
 setkey(l,mmsi,lid)
 
 #-----针对每条船舶每个tripid 进行segment 分割------------------
-ammsi=209075000
-shipp=points[mmsi==ammsi]
-shipspeed=ships[mmsi==ammsi]$speed*10
-aship=l[mmsi==ammsi]
-aship0=data.table(left_join(aship,points[,list(time1=time,status1=status,sog1=sog,lon1=lon,lat1=lat,pid1=pid,gid1=gid)],'pid1'))
-aship0=data.table(left_join(aship0,points[,list(time2=time,status2=status,sog2=sog,lon2=lon,lat2=lat,pid2=pid,gid2=gid)],'pid2'))
-atrip=aship0[tripid==38]
+#points 为总的数据点，去掉了sog小于0的点。
 
-#--------去掉每个trip的不合理轨迹点，并根据停留区域分割轨迹------
-tripids=aship0[tripid>0,.N,tripid]$tripid#tripid=0时为trip分割航段
-segments=data.table(gid=0,mmsi=0,time=0,status=0,sog=0,lon=0,lat=0,tripid=0,cls=0,segid=0,scls=0,ecls=0)[mmsi<0]
-for(id in tripids){
-  print(id)
-  atrip=aship0[tripid==id]
-  #去掉不合理平均航速的轨迹点
-  atrip=delectBigAvgSpeed(shipp,speedscale=1.3,atrip)
-  tripp=atrip[,list(mmsi,time=time1,status=status1,sog=sog1,lon=lon1,lat=lat1,gid=gid1,tripid)]
-  tripp=rbind(tripp,atrip[nrow(atrip),list(mmsi,time=time2,status=status2,sog=sog2,lon=lon2,lat=lat2,gid=gid2,tripid)])
-  tripseg=addSegment(tripp,clusters)
-  segments=rbind(segments,tripseg)
+clusters=detectStayArea(points0,0.03,10,1000,100)
+mmsis=l[,.N,mmsi]$mmsi
+segments=data.table(mmsi=0,time=0,status=0,sog=0,lon=0,lat=0,tripid=0,segid=0,scls=0,ecls=0,cls=0)[mmsi<0]
+for(i in (1:length(mmsis))){
+  if(i%%10==0){
+    print(paste(ammsi,i,sep=":"))
+  }
+  
+  ammsi=mmsis[i]#ammsi=209075000
+  shipspeed=ships[mmsi==ammsi]$speed*10
+  speedscale=1.3#计算的平均航速不能大于1.3倍设计航速
+  shipsegments=segmentOneShip(ammsi,points0,shipspeed,speedscale)
+  shipseg=shipsegments[,list(mmsi,time,status,sog,lon,lat,tripid,segid,scls,ecls,cls)]
+  segments=rbind(segments,shipseg)
+  
 }
-segments=segments[,list(mmsi,time,status,sog,lon,lat,tripid,segid,scls,ecls,cls)]
+
 setkey(segments,mmsi,time)
-segments[segid>0&tripid>0,.N,list(tripid,segid)]
-
 #-----缺失轨迹插值--------
-ss=setPoints(segments,scale=100)#segment points
-sl=getSegmentLines(ss)
-missLines=sl[distance>5*1852]#所有船舶
+#-----单船循环处理--------
+segments=setPoints(segments,scale);setkey(segments,mmsi,time)
 addedPoints=data.table(mmsi=0,time=0,status=0,sog=0,lon=0,lat=0,tripid=0,segid=0,scls=0,ecls=0,cls=0)[mmsi<0]
-# get points from ships with similar dwt and same type
-shipdwt=ships[mmsi==missLines[1]$mmsi]$dwt#第一艘船
-refmmsis=ships[dwt>=0.95*shipdwt&dwt<=1.05*shipdwt]$mmsi
-refpoints=segments[mmsi%in%refmmsis]
-
-for(i in (1:nrow(missLines))){
-  i=14
-  ln=missLines[i,] 
-  refp=getRefPoints(ln,refpoints,r=3,samedirection=1,scale=100)
-  #---利用每个seg的航行距离,剥离不合理的seg----
-  refp2=refineRefpoints(refp,epsscale=0.2,minpnt=5)
-  #-----加入缺失点------
-  addp=addMissPoints(ln,refp2,100,3)
-  addedPoints=rbind(addedPoints,addp)
+mmsis=segments[,.N,mmsi]$mmsi
+for(j in (13:length(mmsis))) {
+  ammsi = mmsis[j]
   
+  if (j %% 10 == 0) {
+    print(paste(ammsi,j,sep = ":"))
+  }
   
+  ss = segments[mmsi == ammsi]
+  sl = getSegmentLines(ss)
+  missLines = sl[distance > 5 * 1852]#所有船舶
+  #端点平均航速与距离时间平均航速在5%以内，不用插值
+  if (nrow(missLines) > 0) {
+    missLines = missLines[abs(avgspeed1 - avgspeed2) / avgspeed1 > 0.05]
+    # get points from ships with similar dwt and same type
+    shipdwt = ships[mmsi == missLines[1]$mmsi]$dwt#第一艘船
+    refmmsis = ships[dwt >= 0.9 * shipdwt & dwt <= 1.1 * shipdwt]$mmsi
+    refpoints = segments[mmsi %in% refmmsis]
+    for (i in (1:nrow(missLines))) {
+      print(i)
+      
+      ln = missLines[i,]
+      #不包括ln所在segment
+      refp = getRefPoints(
+        ln,refpoints,r = 3,samedirection = 1,scale = 100
+      )
+      if (nrow(refp) > 0) {
+        #---利用每个seg的航行距离,剥离不合理的seg----
+        refp2 = refineRefpoints(refp,epsscale = 0.1,minpnt = 3)
+        #-----加入缺失点------
+        addp = addMissPoints(ln,refp2,100,2)
+        addedPoints = rbind(addedPoints,addp)
+        
+      }
+      
+    }
+    
+  }
 }
 
-atrip=refpoints[tripid==ln$tripid1&segid==ln$segid1]
+atrip=refpoints[mmsi==ln$mmsi&tripid==ln$tripid1]
 #cha zhi
 p=ggplot()
-p=p+geom_point(data=refp,aes(x=lon,y=lat))
+p=p+geom_point(data=sample_n(refp,5000),aes(x=lon,y=lat))
 p=p+geom_point(data=atrip,aes(x=lon,y=lat),color='green')
 p=p+geom_point(data=ln,aes(x=lon1,y=lat1),color='red',size=4)
 p=p+geom_point(data=ln,aes(x=lon2,y=lat2),color='blue',size=4)
@@ -128,7 +156,7 @@ p
 
 
 
-
+------------------
 p=ggplot()
 p=p+geom_point(data=atrip,aes(x=lon.x,y=lat.x))
 p=p+geom_point(data=atrip[avgspeed>200],aes(x=lon.x,y=lat.x,col=as.factor(avgspeed)),size=5)
